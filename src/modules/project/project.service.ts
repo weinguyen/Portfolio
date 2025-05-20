@@ -19,7 +19,7 @@ export class ProjectService {
   async findAll(): Promise<Project[]> {
     return this.projectRespository.find();
   }
-  async remove(id: string): Promise<void> {
+  async remove(id: string): Promise<any> {
     const project = await this.projectRespository.findOneById(id);
 
     if (project?.image) {
@@ -37,6 +37,7 @@ export class ProjectService {
     }
 
     await this.projectRespository.delete(id);
+    return { success: true };
   }
   uploadFile(file: Express.Multer.File): string {
     return file.path;

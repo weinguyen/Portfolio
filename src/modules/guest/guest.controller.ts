@@ -2,6 +2,8 @@ import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { CreateGuestDto } from './dto/create-guest.dto';
 import { GuestService } from './guest.service';
 import { Public } from 'src/common/decorators/public.decorator';
+import { ApiBearerAuth } from '@nestjs/swagger';
+@ApiBearerAuth()
 @Controller('guest')
 export class GuestController {
   constructor(private readonly GuestService: GuestService) {}

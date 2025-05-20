@@ -39,8 +39,7 @@ __decorate([
 ], Project.prototype, "description", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
-    (0, typeorm_1.Column)(),
-    (0, class_validator_1.IsString)(),
+    (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], Project.prototype, "github", void 0);
 __decorate([
@@ -50,6 +49,6 @@ __decorate([
     __metadata("design:type", String)
 ], Project.prototype, "image", void 0);
 exports.Project = Project = __decorate([
-    (0, typeorm_1.Entity)('project')
+    (0, typeorm_1.Entity)('phuc-project')
 ], Project);
 //# sourceMappingURL=project.entity.js.map

@@ -5,5 +5,5 @@ export declare class GuestController {
     constructor(GuestService: GuestService);
     create(createGuestDto: CreateGuestDto): Promise<import("./entities/guest.entity").Guest>;
     findall(): Promise<import("./entities/guest.entity").Guest[]>;
-    remove(id: string): Promise<void>;
+    remove(id: string): Promise<any>;
 }

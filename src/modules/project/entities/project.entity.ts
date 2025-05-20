@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { IsOptional, IsString } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-@Entity('project')
+@Entity('phuc-project')
 export class Project {
   @PrimaryGeneratedColumn('uuid')
   id: number;
@@ -14,8 +14,7 @@ export class Project {
   @Column()
   description: string;
   @ApiProperty()
-  @Column()
-  @IsString()
+  @Column({ nullable: true })
   github: string;
   @ApiProperty()
   @Column()

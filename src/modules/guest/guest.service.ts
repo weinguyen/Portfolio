@@ -17,7 +17,8 @@ export class GuestService {
   async findAll(): Promise<Guest[]> {
     return this.guestRepository.find();
   }
-  async remove(id: string): Promise<void> {
+  async remove(id: string): Promise<any> {
     await this.guestRepository.delete(id);
+    return { success: true };
   }
 }

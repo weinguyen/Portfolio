@@ -6,5 +6,5 @@ export declare class ProjectController {
     create(createProjectDto: CreateProjectDto): Promise<import("./entities/project.entity").Project>;
     findall(): Promise<import("./entities/project.entity").Project[]>;
     uploadFile(file: Express.Multer.File): string;
-    remove(id: string): Promise<void>;
+    remove(id: string): Promise<any>;
 }

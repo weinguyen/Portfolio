@@ -31,6 +31,7 @@ let GuestService = class GuestService {
     }
     async remove(id) {
         await this.guestRepository.delete(id);
+        return { success: true };
     }
 };
 exports.GuestService = GuestService;

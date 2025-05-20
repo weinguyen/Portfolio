@@ -5,5 +5,5 @@ export declare class GuestService {
     constructor(guestRepository: Repository<Guest>);
     create(createGuestDto: Partial<Guest>): Promise<Guest>;
     findAll(): Promise<Guest[]>;
-    remove(id: string): Promise<void>;
+    remove(id: string): Promise<any>;
 }

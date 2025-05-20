@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const create_guest_dto_1 = require("./dto/create-guest.dto");
 const guest_service_1 = require("./guest.service");
 const public_decorator_1 = require("../../common/decorators/public.decorator");
+const swagger_1 = require("@nestjs/swagger");
 let GuestController = class GuestController {
     GuestService;
     constructor(GuestService) {
@@ -55,6 +56,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], GuestController.prototype, "remove", null);
 exports.GuestController = GuestController = __decorate([
+    (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.Controller)('guest'),
     __metadata("design:paramtypes", [guest_service_1.GuestService])
 ], GuestController);

@@ -18,6 +18,7 @@ const project_service_1 = require("./project.service");
 const create_project_dto_1 = require("./dto/create-project.dto");
 const platform_express_1 = require("@nestjs/platform-express");
 const public_decorator_1 = require("../../common/decorators/public.decorator");
+const swagger_1 = require("@nestjs/swagger");
 let ProjectController = class ProjectController {
     projectService;
     constructor(projectService) {
@@ -67,6 +68,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProjectController.prototype, "remove", null);
 exports.ProjectController = ProjectController = __decorate([
+    (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.Controller)('project'),
     __metadata("design:paramtypes", [project_service_1.ProjectService])
 ], ProjectController);

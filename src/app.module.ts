@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GuestModule } from './modules/guest/guest.module';
+import { CertModule } from './modules/cert/cert.module';
 import { ProjectModule } from './modules/project/project.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import path, { dirname, join } from 'path';
@@ -33,7 +34,7 @@ import { APP_GUARD } from '@nestjs/core';
         serveRoot: '/uploads',
       },
       {
-        rootPath: join(__dirname, '..', 'portfolio-website'),
+        rootPath: join(__dirname, '..', 'view'),
         serveRoot: '/',
       },
     ),
@@ -41,6 +42,7 @@ import { APP_GUARD } from '@nestjs/core';
     GuestModule,
     ProjectModule,
     AuthModule,
+    CertModule,
   ],
   providers: [
     {

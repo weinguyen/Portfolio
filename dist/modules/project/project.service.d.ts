@@ -6,6 +6,6 @@ export declare class ProjectService {
     constructor(projectRespository: Repository<Project>);
     create(createProjectDto: CreateProjectDto): Promise<Project>;
     findAll(): Promise<Project[]>;
-    remove(id: string): Promise<void>;
+    remove(id: string): Promise<any>;
     uploadFile(file: Express.Multer.File): string;
 }

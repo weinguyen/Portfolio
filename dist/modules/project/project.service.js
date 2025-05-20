@@ -47,6 +47,7 @@ let ProjectService = class ProjectService {
             }
         }
         await this.projectRespository.delete(id);
+        return { success: true };
     }
     uploadFile(file) {
         return file.path;

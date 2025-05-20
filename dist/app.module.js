@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const config_1 = require("@nestjs/config");
 const guest_module_1 = require("./modules/guest/guest.module");
+const cert_module_1 = require("./modules/cert/cert.module");
 const project_module_1 = require("./modules/project/project.module");
 const serve_static_1 = require("@nestjs/serve-static");
 const path_1 = require("path");
@@ -44,12 +45,13 @@ exports.AppModule = AppModule = __decorate([
                 rootPath: (0, path_1.join)(__dirname, '..', 'uploads'),
                 serveRoot: '/uploads',
             }, {
-                rootPath: (0, path_1.join)(__dirname, '..', 'portfolio-website'),
+                rootPath: (0, path_1.join)(__dirname, '..', 'view'),
                 serveRoot: '/',
             }),
             guest_module_1.GuestModule,
             project_module_1.ProjectModule,
             auth_module_1.AuthModule,
+            cert_module_1.CertModule,
         ],
         providers: [
             {
