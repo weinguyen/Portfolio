@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyen Quynh Giao - Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const hero = document.getElementById("hero-about");
+            hero.style.opacity = "1";
+            hero.style.animation = "fadeInUp 1s ease-out forwards";
+        });
+    </script>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Nguyen Quynh Giao</h1>
+            </div>
+            <nav>
+                <ul class="menu">
+                    <li><a href="#hero-about">Giới Thiệu</a></li>
+                    <li><a href="#experience">Kinh Nghiệm</a></li>
+                    <li><a href="#case-studies">Giải Case</a></li>
+                    <li><a href="#design">Design</a></li>
+                    <li><a href="#content">Content</a></li>
+                    <li><a href="#projects">Dự Án</a></li>
+                    <li><a href="#contact">Liên Hệ</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero-about">
+        <div class="container">
+            <div class="hero-about-content">
+                <div class="profile-column">
+                    <p style="margin-top: 15px;">
+                        <a href="https://www.tiktok.com/@ngzao" target="_blank"
+                            style="color: var(--primary-color); font-weight: 500;">
+                            <i class="fab fa-tiktok" style="margin-right: 5px;"></i> @ngzao
+                        </a>
+                    </p>
+                    <div class="profile-image-container">
+                        <img src="./asset/avt.jpg" alt="Nguyen Quynh Giao" class="profile-image">
+                    </div>
+                    <div class="profile-intro">
+                        <h1>Nguyen Quynh Giao</h1>
+
+                        <p class="tagline">Marketing Specialist | Content Creator | Designer</p>
+                        <p class="intro-text">Tôi là một chuyên gia marketing với kinh nghiệm trong việc quản lý mạng xã
+                            hội, sáng tạo nội dung và thiết kế. Với đam mê về truyền thông và marketing, tôi luôn tìm
+                            kiếm những cách sáng tạo để kết nối thương hiệu với khách hàng.</p>
+
+                        <a href="#contact" class="btn">Liên Hệ Ngay</a>
+
+
+                    </div>
+                </div>
+                <div class="info-column">
+                    <div class="info-card">
+                        <div class="info-section">
+                            <h3><i class="fas fa-bullseye"></i> Mục Tiêu</h3>
+                            <div class="info-content">
+                                <div class="goal">
+                                    <h4>Ngắn hạn:</h4>
+                                    <p>Trở thành Thực tập sinh Marketing, tham gia thu thập và phân tích thông tin thị
+                                        trường, hỗ trợ triển khai chiến dịch quảng cáo Digital hiệu quả.</p>
+                                </div>
+                                <div class="goal">
+                                    <h4>5 năm:</h4>
+                                    <p>Phát triển thành Chuyên viên Marketing, dẫn dắt chiến lược truyền thông tích hợp
+                                        và tối ưu hóa hiệu quả ROI.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h3><i class="fas fa-graduation-cap"></i> Học Vấn</h3>
+                            <div class="info-content">
+                                <p><strong>Truyền thông Quốc Tế - Marketing</strong> | GPA 4.0 - Hạng 7 khối Marketing
+                                </p>
+                                <p>Học viện Ngoại giao (2024-2028)</p>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h3><i class="fas fa-tools"></i> Kĩ Năng</h3>
+                            <div class="info-content">
+                                <div class="skills-container">
+                                    <div class="software-skills">
+                                        <div class="software-skill">
+                                            <img src="./asset/icons/Adobe_Illustrator_CC_icon.svg.png"
+                                                alt="Adobe Illustrator" class="skill-icon">
+                                        </div>
+                                        <div class="software-skill">
+                                            <img src="./asset/icons/Adobe_Photoshop_CC_icon.svg.png"
+                                                alt="Adobe Illustrator" class="skill-icon">
+
+                                        </div>
+                                        <div class="software-skill">
+                                            <img src="./asset/icons/Adobe_Photoshop_Lightroom_CC_logo.svg.png"
+                                                alt="Adobe Illustrator" class="skill-icon">
+
+                                        </div>
+                                        <div class="software-skill">
+                                            <img src="./asset/icons/Adobe_InDesign_CC_icon.svg.png"
+                                                alt="Adobe Illustrator" class="skill-icon">
+
+                                        </div>
+                                        <div class="software-skill">
+                                            <img src="./asset/icons/Microsoft_Excel_2013-2019_logo.svg.png"
+                                                alt="Adobe Illustrator" class="skill-icon">
+                                        </div>
+                                        <div class="software-skill">
+                                            <img src="./asset/icons/Microsoft_Office_Word_(2019–present).svg.png"
+                                                alt="Adobe Illustrator" class="skill-icon">
+                                        </div>
+                                        <div class="software-skill">
+                                            <img src="./asset/icons/Microsoft_Office_PowerPoint_(2019–present).svg.png"
+                                                alt="Adobe Illustrator" class="skill-icon">
+                                        </div>
+                                        <div class="software-skill">
+                                            <img src="./asset/icons/Google_Sheets_2020_Logo.svg.png"
+                                                alt="Adobe Illustrator" class="skill-icon">
+                                        </div>
+                                        <div class="software-skill">
+                                            <img src="./asset/icons/Procreate_icon.png" alt="Adobe Illustrator"
+                                                class="skill-icon">
+                                        </div>
+                                        <div class="software-skill">
+                                            <img src="./asset/icons/Canva_Logo.svg.png" alt="Adobe Illustrator"
+                                                class="skill-icon">
+                                        </div>
+                                        <div class="software-skill">
+                                            <img src="./asset/icons/capcut-logo-on-transparent-white-background-free-vector.jpg"
+                                                alt="Adobe Illustrator" class="skill-icon">
+
+                                        </div>
+                                    </div>
+                                    <ul class="soft-skills">
+                                        <li>Phân tích thị trường, lập kế hoạch truyền thông</li>
+                                        <li>Giao tiếp, làm việc nhóm, thuyết trình</li>
+                                        <li>Thiết kế đồ hoạ, vẽ minh hoạ</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Kinh Nghiệm Làm Việc</h2>
+
+            <h3 class="subsection-title">Quản lý và Thiết kế</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">
+                        <span>2022 - Hiện tại</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Quản lí và thiết kế | Facebook Fanpage</h3>
+                        <div class="timeline-card">
+                            <h4>ACE's TIMES CAIXUKUN Vietnam</h4>
+                            <p>Quản trị fanpage 121K followers: xây dựng bộ nhận diện thương hiệu và nội dung bài đăng
+                            </p>
+                            <a href="https://www.facebook.com/Acestimescxkvnfp?locale=vi_VN" target="_blank"
+                                class="timeline-link">Xem Fanpage <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">
+                        <span>2018 - 2022</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Quản lí và thiết kế | Facebook Fanpage</h3>
+                        <div class="timeline-card">
+                            <h4>Quach Tử Pham Vietnam Fanpage</h4>
+                            <p>Quản lý 10 thành viên: viết bài, dịch video và thiết kế ấn phẩm truyền thông</p>
+                            <p>Quản trị fanpage 5.4K followers</p>
+                            <a href="https://www.facebook.com/guozifanvietnamfanpage?locale=vi_VN" target="_blank"
+                                class="timeline-link">Xem Fanpage <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">
+                        <span>5/2021 - 8/2021</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Quản lí và thiết kế | Facebook Fanpage</h3>
+                        <div class="timeline-card">
+                            <h4>Lưu Vũ Bach Niên Giai Lao</h4>
+                            <p>Sáng lập và phát triển fanpage đạt 1.5K followers, 7K tương tác trong 2 tháng</p>
+                            <p>Hợp tác với các nhóm fanpage sự kiện</p>
+                            <a href="https://www.facebook.com/liuyuvafangirlume?locale=vi_VN" target="_blank"
+                                class="timeline-link">Xem Fanpage <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">
+                        <span>2023 - Hiện tại</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Sole - Marketing | L.A Agency</h3>
+                        <div class="timeline-card">
+                            <p>Lập kế hoạch và sáng tạo nội dung kênh TikTok "Trạm Phát Thanh 2006" đạt 1.000+ views và
+                                100+ tương tác trên mỗi video</p>
+                            <p>Hỗ trợ seeding và tư vấn khóa học tiếng Anh cho đối tác</p>
+                            <div class="timeline-media">
+                                <h4>TikTok Content:</h4>
+                                <ul class="timeline-links">
+                                    <li>
+                                        <a href="https://www.tiktok.com/@tramphatthanh2006/video/7399640115007491336"
+                                            target="_blank">
+                                            <i class="fab fa-tiktok"></i> Video 1 - Top 3 lý do nên học tại...(P1)
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.tiktok.com/@tramphatthanh2006/video/7402274602484813063"
+                                            target="_blank">
+                                            <i class="fab fa-tiktok"></i> Video 2 - Top 3 lý do nên học tại...(P2)
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.tiktok.com/@tramphatthanh2006/photo/7392575882784673042"
+                                            target="_blank">
+                                            <i class="fab fa-tiktok"></i> Photo 1 - 2k6 không thể bỏ qua!
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.tiktok.com/@tramphatthanh2006/photo/7394069505606962440"
+                                            target="_blank">
+                                            <i class="fab fa-tiktok"></i> Photo 2 - Bạn phù hợp với ngành nghề
+                                            nào...(P1)
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.tiktok.com/@tramphatthanh2006/photo/7394435473042672903?is_from_webapp=1&sender_device=pc&web_id=7505075138179352071"
+                                            target="_blank">
+                                            <i class="fab fa-tiktok"></i> Photo 3 - Bạn phù hợp với ngành nghề
+                                            nào...(P2)
+                                        </a>
+                                    </li>
+                                </ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">
+                        <span>2021 - Hiện tại</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Designer</h3>
+                        <div class="timeline-card">
+                            <p>Thiết kế đồ họa cho nhiều dự án và sự kiện</p>
+                            <p>Xây dựng bộ nhận diện thương hiệu cho các dự án</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="subsection-title" style="margin-top: 40px;">Hoạt Động Ngoại Khóa</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">
+                        <span>6/2022 - 6/2023</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Phó chủ tịch | CSP Debate Society</h3>
+                        <div class="timeline-card">
+                            <ul>
+                                <li>Quản lý 4 phân ban (Quan hệ công chúng, Tài chính, Thiết kế, Nhân sự) với 100+ thành
+                                    viên</li>
+                                <li>Quản lý quỹ 120.000.000 VND cho sự kiện, thiết kế bộ nhận diện và chiến lược truyền
+                                    thông, thu hút 3.000+ lượt theo dõi</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">
+                        <span>9/2022 - 3/2023</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Phó ban tổ chức | Warm-up Debating Championship</h3>
+                        <div class="timeline-card">
+                            <ul>
+                                <li>Điều phối và đào tạo 150 thành viên tổ chức sự kiện</li>
+                                <li>Ký kết hợp đồng với 15 nhà tài trợ, huy động 30.000.000 VND</li>
+                                <li>Xây dựng chiến lược truyền thông, thu hút 52 đội và 300+ thí sinh trên toàn quốc
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">
+                        <span>9/2022 - 1/2023</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Đồng Trưởng ban tổ chức | Talk show AIONIA</h3>
+                        <div class="timeline-card">
+                            <p>Talkshow AIONIA cung cấp các thông tin về LGBT+ và bình đẳng giới tính theo hình thức
+                                chia sẻ và trả lời câu hỏi</p>
+                            <ul>
+                                <li>Lên kế hoạch truyền thông thu hút 100 người tham gia</li>
+                                <li>Trao đổi trực tiếp với team Sài Gòn Tếu để mời diễn giả Uy Lê cho talkshow</li>
+                                <li>Làm việc với Châu Bùi tạo dựng video truyền thông với hơn 500 lượt tương tác và 300
+                                    người theo dõi mới</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">
+                        <span>5/2022 - 3/2023</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Trợ lí phân ban Marketing | Phục Liên Thời</h3>
+                        <div class="timeline-card">
+                            <p>Phục Liên Thời là dự án về văn hóa và thời trang với mục tiêu đem văn hóa Việt Nam hòa
+                                nhập vào cuộc sống hiện đại</p>
+                            <ul>
+                                <li>Thực hiện vị trí copywriter và lên ý tưởng cho bài đăng truyền thông</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">
+                        <span>2023 - 9/2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Trưởng ban thiết kế | Lặng</h3>
+                        <div class="timeline-card">
+                            <ul>
+                                <li>Thiết kế và chỉnh sửa các ấn phẩm trên fanpage</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">
+                        <span>11/2024 - Hiện tại</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Thành viên ban Truyền thông | DJC Nhóm bút DAV</h3>
+                        <div class="timeline-card">
+                            <ul>
+                                <li>Thiết kế các ấn phẩm hình ảnh cho câu lạc bộ</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="case-studies">
+        <div class="container">
+            <h2 class="section-title">Giải Case</h2>
+            <div class="case-studies-grid">
+                <div class="case-study-item">
+                    <h3>Dash for Impact - Bán kết</h3>
+                    <p>Giải pháp marketing chiến lược</p>
+                    <a href="https://www.canva.com/design/DAF4QMz1EZs/zIcoFNcXiGzMFS9dw62WeA/edit" target="_blank"
+                        class="btn-small">Xem Case</a>
+                </div>
+                <div class="case-study-item">
+                    <h3>Marketing Case</h3>
+                    <p>Bài tập phân tích và đề xuất chiến lược</p>
+                    <a href="https://www.canva.com/design/DAGc5WK-jIY/7qkNQVqzSZdMTSWY904Ayw/edit" target="_blank"
+                        class="btn-small">Xem Case</a>
+                </div>
+                <div class="case-study-item">
+                    <h3>Marketing Strategy</h3>
+                    <p>Phân tích thị trường và đề xuất giải pháp</p>
+                    <a href="https://www.canva.com/design/DAGiC5OHlh8/hR-r91YbsiFT8LSmGmY4fg/edit" target="_blank"
+                        class="btn-small">Xem Case</a>
+                </div>
+                <div class="case-study-item">
+                    <h3>Marketing Analysis</h3>
+                    <p>Nghiên cứu và đề xuất chiến lược</p>
+                    <a href="https://www.canva.com/design/DAGkIzHqfDk/WZ81SoNRDQjZr-TB82tdTw/edit" target="_blank"
+                        class="btn-small">Xem Case</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="design">
+        <div class="container">
+            <h2 class="section-title">Design</h2>
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="pacland-2023">Pacland 2023</button>
+                    <button class="tab-btn" data-tab="pacland-2022">Pacland 2022</button>
+                    <button class="tab-btn" data-tab="other-designs">Thiết kế khác</button>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="pacland-2023">
+                        <div class="design-grid design-slider">
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/1Y522xSYNQ" target="_blank">
+                                    <img src="./asset/pacland2023/1.jpg" alt="Pacland 2023">
+                                    <div class="design-overlay">
+                                        <h4>Pacland 2023</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/1HtMwJ7pkg" target="_blank">
+                                    <img src="./asset/pacland2023/2.jpg" alt="Design 1">
+                                    <div class="design-overlay">
+                                        <h4>Pacland 2023</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/18p5h9zm9x/" target="_blank">
+                                    <img src="./asset/pacland2023/3.jpg" alt="Design 2">
+                                    <div class="design-overlay">
+                                        <h4>Pacland 2023</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/18p5h9zm9x/" target="_blank">
+                                    <img src="./asset/pacland2023/4.jpg" alt="Design 3">
+                                    <div class="design-overlay">
+                                        <h4>Pacland 2023</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/18rTSSg3JN/" target="_blank">
+                                    <img src="./asset/pacland2023/5.jpg" alt="Design 4">
+                                    <div class="design-overlay">
+                                        <h4>Pacland 2023</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/16dLbmovSN/" target="_blank">
+                                    <img src="./asset/pacland2023/7.jpg" alt="Design 5">
+                                    <div class="design-overlay">
+                                        <h4>Pacland 2023</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/16EGvtmcwf/" target="_blank">
+                                    <img src="./asset/pacland2023/8.jpg" alt="Design 6">
+                                    <div class="design-overlay">
+                                        <h4>Pacland 2023</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/CSPDebateSociety/posts/pfbid02qqpVpwcsWVY9MoS4vg4xiQY11rMGL9nDGCfBvgcCtZ5p2viyG4fda58pxqWLiHUAl"
+                                    target="_blank">
+                                    <img src="./asset/pacland2023/9.jpg" alt="Design 7">
+                                    <div class="design-overlay">
+                                        <h4>Pacland 2023</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="pacland-2022">
+                        <div class="design-grid design-slider">
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/1KzUy6iJkq/" target="_blank">
+                                    <img src="./asset/pacland2022/1.png" alt="Pacland 2022">
+                                    <div class="design-overlay">
+                                        <h4>Pacland 2022</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/19GACmdtXo/" target="_blank">
+                                    <img src="./asset/pacland2022/2.jpg" alt="Design 1">
+                                    <div class="design-overlay">
+                                        <h4>Pacland 2022</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/19GACmdtXo/" target="_blank">
+                                    <img src="./asset/pacland2022/3.jpg" alt="Design 1">
+                                    <div class="design-overlay">
+                                        <h4>Pacland 2022</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/19GACmdtXo/" target="_blank">
+                                    <img src="./asset/pacland2022/4.jpg" alt="Design 1">
+                                    <div class="design-overlay">
+                                        <h4>Pacland 2022</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/19GACmdtXo/" target="_blank">
+                                    <img src="./asset/pacland2022/5.jpg" alt="Design 1">
+                                    <div class="design-overlay">
+                                        <h4>Pacland 2022</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/CSPDebateSociety/posts/pfbid02JxmqqBxzFN9RY4Lp5PYw9EgHTLoiBwvDGSzTGhx8uqVNe4xV3nRyFtZAFesLn7cql"
+                                    target="_blank">
+                                    <img src="./asset/pacland2022/6.jpg" alt="Design 2">
+                                    <div class="design-overlay">
+                                        <h4>Pacland 2022</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/1EnaWVGum9/" target="_blank">
+                                    <img src="./asset/pacland2022/7.jpg" alt="Design 3">
+                                    <div class="design-overlay">
+                                        <h4>Pacland 2022</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="other-designs">
+                        <div class="design-grid design-slider">
+                            <div class="design-item ">
+                                <a href="https://www.facebook.com/share/p/16b8tVn3bv/" target="_blank">
+                                    <img src="./asset/other/1.jpg" alt="Design 1">
+                                    <div class="design-overlay">
+                                        <h4>TỪ ĐIỂN TIẾNG DEBATE</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/16b8tVn3bv/" target="_blank">
+                                    <img src="./asset/other/2.jpg" alt="Design 1">
+                                    <div class="design-overlay">
+                                        <h4>TỪ ĐIỂN TIẾNG DEBATE</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/16b8tVn3bv/" target="_blank">
+                                    <img src="./asset/other/3.jpg" alt="Design 1">
+                                    <div class="design-overlay">
+                                        <h4>TỪ ĐIỂN TIẾNG DEBATE</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/16b8tVn3bv/" target="_blank">
+                                    <img src="./asset/other/4.jpg" alt="Design 1">
+                                    <div class="design-overlay">
+                                        <h4>TỪ ĐIỂN TIẾNG DEBATE</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/16b8tVn3bv/" target="_blank">
+                                    <img src="./asset/other/5.jpg" alt="Design 1">
+                                    <div class="design-overlay">
+                                        <h4>TỪ ĐIỂN TIẾNG DEBATE</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/16b8tVn3bv/" target="_blank">
+                                    <img src="./asset/other/6.jpg" alt="Design 1">
+                                    <div class="design-overlay">
+                                        <h4>TỪ ĐIỂN TIẾNG DEBATE</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/16b8tVn3bv/" target="_blank">
+                                    <img src="./asset/other/7.jpg" alt="Design 1">
+                                    <div class="design-overlay">
+                                        <h4>TỪ ĐIỂN TIẾNG DEBATE</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/16b8tVn3bv/" target="_blank">
+                                    <img src="./asset/other/8.jpg" alt="Design 1">
+                                    <div class="design-overlay">
+                                        <h4>TỪ ĐIỂN TIẾNG DEBATE</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/1CJpf5ie9u/" target="_blank">
+                                    <img src="./asset/other/9.jpg" alt="Design 2">
+                                    <div class="design-overlay">
+                                        <h4>PRESIDENT</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/1EnNNu1F4E/" target="_blank">
+                                    <img src="./asset/other/10.jpg" alt="Design 3">
+                                    <div class="design-overlay">
+                                        <h4>HEAD OF INTERNAL RELATIONS</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="https://www.facebook.com/share/p/15JbjGRBkC/" target="_blank">
+                                    <img src="./asset/other/11.jpg" alt="Design 4">
+                                    <div class="design-overlay">
+                                        <h4>VICE PRESIDENT</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="content">
+        <div class="container">
+            <h2 class="section-title">Content</h2>
+            <div class="content-grid">
+                <div class="content-item">
+                    <h3>Content Marketing</h3>
+                    <p>Nội dung sáng tạo cho các chiến dịch marketing</p>
+                    <a href="https://www.facebook.com/share/p/1CEjeqxDBt/" target="_blank" class="btn-small">Xem Nội
+                        Dung</a>
+                </div>
+                <div class="content-item">
+                    <h3>Phục Liên Thời</h3>
+                    <p>Nội dung sáng tạo cho dự án Phục Liên Thời</p>
+                    <div class="content-links">
+                        <a href="https://www.facebook.com/share/p/1AdCrdT2so/" target="_blank">Nội dung 1</a>
+                        <a href="https://www.facebook.com/share/p/16cs8nQdWZ/" target="_blank">Nội dung 2</a>
+                        <a href="https://www.facebook.com/share/p/12LsELR22aq/" target="_blank">Nội dung 3</a>
+                        <a href="https://www.facebook.com/share/p/1GaE9gpW8A/" target="_blank">Nội dung 4</a>
+                        <a href="https://www.facebook.com/share/p/1FeGq9VqqX/" target="_blank">Nội dung 5</a>
+                    </div>
+                </div>
+                <div class="content-item">
+                    <h3>Lặng</h3>
+                    <p>Dự án nội dung Lặng</p>
+                    <a href="https://www.facebook.com/share/p/1FeGq9VqqX/" target="_blank" class="btn-small">Xem Nội
+                        Dung</a>
+                </div>
+                <div class="content-item">
+                    <h3>Nội dung bổ sung</h3>
+                    <p>Các nội dung khác</p>
+                    <a href="https://www.canva.com/design/DAGUQak_umI/hc1DmqKV0n6WGOm7sKDZ2A/edit" target="_blank"
+                        class="btn-small">Xem Nội Dung</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Dự Án</h2>
+            <div class="projects-grid">
+                <div class="project-item">
+                    <h3>Warm-up Champ</h3>
+                    <p>Giải tranh biện thu hút hơn 300 thí sinh</p>
+                    <div class="project-links">
+                        <a href="https://hoahoctro.tienphong.vn/teen-thpt-chuyen-dh-su-pham-to-chuc-giai-tranh-bien-thu-hut-hon-300-thi-sinh-post1521049.tpo"
+                            target="_blank">Báo chí</a>
+                        <a href="https://www.facebook.com/share/p/1CGXxAbrdc/" target="_blank">Recap sự kiện</a>
+                        <a href="https://www.facebook.com/share/v/19GYK2Qtvi/" target="_blank">Video ý tưởng</a>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <h3>Talkshow</h3>
+                    <p>Tổ chức và quản lý talkshow</p>
+                    <div class="project-links">
+                        <a href="https://www.facebook.com/share/p/1C6CFTeCic/" target="_blank">Recap</a>
+                        <a href="https://www.facebook.com/share/v/1HcVxcUFuq/" target="_blank">Video ý tưởng</a>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <h3>Phục Liên Thời</h3>
+                    <p>Dự án văn hóa lịch sử</p>
+                    <div class="project-links">
+                        <a href="https://www.facebook.com/phuclienthoi?locale=vi_VN" target="_blank">Trang Facebook</a>
+                        <a href="https://www.facebook.com/share/p/1EdoVZMGFm/" target="_blank">Recap sự kiện</a>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <h3>DJC</h3>
+                    <p>Dự án sáng tạo nội dung</p>
+                    <a href="https://www.facebook.com/Nhombutdav?locale=vi_VN" target="_blank" class="btn-small">Xem Dự
+                        Án</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Liên Hệ</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>0389805626 (đừng bán thông tin, đừng gọi lúc nửa đêm)</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>ngg.quynhgiao.edunwork@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Nam Từ Liêm, Hà Nội</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-viber"></i>
+                        <p>Viber/Zalo: 0389805626</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Họ và tên</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tin nhắn</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Gửi tin nhắn</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Nguyen Quynh Giao</h3>
+                    <p>Marketing Specialist | Content Creator | Designer</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/ngzaoo" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.tiktok.com/@ngzao" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; weinguyen. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

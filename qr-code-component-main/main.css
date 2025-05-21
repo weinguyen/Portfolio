@@ -1,0 +1,24 @@
+body {
+    background: hsl(0, 0%, 100%);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh
+ }
+ .container{
+   width: 70%;
+   background: hsl(212, 45%, 89%);
+   padding: 200px 100px;
+  
+ }
+ .qr{
+   width:25%;
+   background: hsl(0, 0%, 100%);
+   border-radius: 10px;
+   padding: 20px;
+   margin: auto;
+ }
+ img {
+   width:100%;
+   border-radius: 10px;
+ }
