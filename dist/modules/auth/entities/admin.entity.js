@@ -36,6 +36,6 @@ __decorate([
     __metadata("design:type", String)
 ], Admin.prototype, "password", void 0);
 exports.Admin = Admin = __decorate([
-    (0, typeorm_1.Entity)('admin')
+    (0, typeorm_1.Entity)('phuc-admin')
 ], Admin);
 //# sourceMappingURL=admin.entity.js.map

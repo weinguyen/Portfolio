@@ -1159,7 +1159,7 @@ footer {
 /* ----- Objectives Section ----- */
 .objectives-content {
   flex: 1 1 400px;
-  min-width: 400px;
+  min-width: 300px;
   max-width: 1000px;
   box-sizing: border-box;
   margin-top: 100px;

@@ -57,6 +57,6 @@ __decorate([
     __metadata("design:type", Date)
 ], Guest.prototype, "createdAt", void 0);
 exports.Guest = Guest = __decorate([
-    (0, typeorm_1.Entity)('guest')
+    (0, typeorm_1.Entity)('phuc-guest')
 ], Guest);
 //# sourceMappingURL=guest.entity.js.map
