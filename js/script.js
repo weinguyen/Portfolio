@@ -1,3 +1,18 @@
+document.addEventListener('DOMContentLoaded', function () {
+  // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+  let vh = window.innerHeight * 0.01;
+  // Then we set the value in the --vh custom property to the root of the document
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+  // We listen to the resize event
+  window.addEventListener('resize', () => {
+    // We execute the same script as before
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  });
+});
+
+
 document.addEventListener("DOMContentLoaded", () => {
   // Mobile Menu Toggle
   const hamburger = document.querySelector(".hamburger")
@@ -199,4 +214,81 @@ document.addEventListener("DOMContentLoaded", () => {
   // })
 })
 
+// Smooth scroll for certificates
+document.addEventListener('DOMContentLoaded', function () {
+  const certificatesSlider = document.querySelector('.certificates-slider');
+  let isScrolling = false;
+  let startX;
+  let scrollLeft;
 
+  certificatesSlider.addEventListener('mousedown', (e) => {
+    isScrolling = true;
+    startX = e.pageX - certificatesSlider.offsetLeft;
+    scrollLeft = certificatesSlider.scrollLeft;
+  });
+
+  certificatesSlider.addEventListener('mouseleave', () => {
+    isScrolling = false;
+  });
+
+  certificatesSlider.addEventListener('mouseup', () => {
+    isScrolling = false;
+  });
+
+  certificatesSlider.addEventListener('mousemove', (e) => {
+    if (!isScrolling) return;
+    e.preventDefault();
+    const x = e.pageX - certificatesSlider.offsetLeft;
+    const walk = (x - startX) * 2;
+    certificatesSlider.scrollLeft = scrollLeft - walk;
+  });
+});
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const certificatesSlider = document.querySelector('.certificates-slider');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  let isScrolling = false;
+  let startX;
+  let scrollLeft;
+
+  // Existing mouse events...
+
+  // Add scroll button functionality
+  if (prevBtn && nextBtn) {
+    const scrollAmount = 300; // Adjust scroll amount as needed
+
+    prevBtn.addEventListener('click', () => {
+      certificatesSlider.scrollBy({
+        left: -scrollAmount,
+        behavior: 'smooth'
+      });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      certificatesSlider.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+    });
+
+    // Show/hide buttons based on scroll position
+    const updateScrollButtons = () => {
+      prevBtn.style.opacity = certificatesSlider.scrollLeft <= 0 ? '0.5' : '1';
+      prevBtn.style.cursor = certificatesSlider.scrollLeft <= 0 ? 'default' : 'pointer';
+
+      const maxScroll = certificatesSlider.scrollWidth - certificatesSlider.clientWidth;
+      nextBtn.style.opacity = certificatesSlider.scrollLeft >= maxScroll ? '0.5' : '1';
+      nextBtn.style.cursor = certificatesSlider.scrollLeft >= maxScroll ? 'default' : 'pointer';
+    };
+
+    certificatesSlider.addEventListener('scroll', updateScrollButtons);
+    window.addEventListener('resize', updateScrollButtons);
+
+    // Initial button state
+    updateScrollButtons();
+  }
+});

@@ -18,6 +18,17 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  min-width: 320px;
+  /* Ngăn scroll ngang không cần thiết */
+}
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
@@ -45,8 +56,11 @@ img {
 }
 
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
 .section-title {
@@ -107,6 +121,7 @@ header .container {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
+  /* Đảm bảo padding không quá lớn, gây tràn trên mobile */
 }
 
 .logo h1 {
@@ -146,6 +161,7 @@ header .container {
 
 .hamburger {
   display: none;
+  /* Hidden by default on desktop */
   cursor: pointer;
 }
 
@@ -160,7 +176,8 @@ header .container {
 
 /* Hero-About Combined Section */
 #hero-about {
-  padding: 120px;
+  padding: 120px 20px;
+  /* Giảm padding ngang để tránh tràn trên mobile */
   min-height: 100vh;
   background: linear-gradient(135deg, rgba(0, 86, 179, 0.05) 0%, rgba(220, 53, 69, 0.05) 100%);
   display: flex;
@@ -171,6 +188,8 @@ header .container {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
+  width: 100%;
+  /* Đảm bảo nội dung sử dụng toàn bộ chiều rộng */
 }
 
 
@@ -187,6 +206,7 @@ header .container {
 .profile-image-container {
   margin-bottom: 30px;
 }
+
 
 .profile-image {
   max-width: 280px;
@@ -216,6 +236,57 @@ header .container {
   color: var(--secondary-color);
   margin-bottom: 20px;
   font-weight: 500;
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 15px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #hero-about {
+    padding: 80px 0 40px;
+    /* Điều chỉnh padding top để tránh conflict với header */
+    width: 100%;
+  }
+
+  .hero-about-content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .profile-column,
+  .info-column {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Đảm bảo các section luôn full width */
+  section {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Điều chỉnh padding cho các grid container */
+  .case-studies-grid,
+  .design-grid,
+  .content-grid,
+  .projects-grid {
+    margin: 0;
+    padding: 15px;
+    width: calc(100% - 30px);
+  }
+}
+
+/* Add viewport height correction for mobile browsers */
+@media screen and (max-width: 576px) {
+  .min-vh-100 {
+    min-height: calc(var(--vh, 1vh) * 100);
+  }
 }
 
 .intro-text {
@@ -512,7 +583,12 @@ header .container {
 }
 
 /* Design Section - Enhanced with Images */
-#design {}
+#design {
+  padding: 100px 0;
+  /* Thêm padding cho section Design */
+  background-color: var(--white-color);
+  /* Thêm màu nền để phân biệt */
+}
 
 .tabs {
   max-width: 1000px;
@@ -548,7 +624,6 @@ header .container {
 }
 
 .tab-pane {
-
   display: none;
 }
 
@@ -575,6 +650,10 @@ header .container {
   height: 100%;
   object-fit: cover;
   transition: var(--transition);
+}
+
+.design-item:hover {
+  transform: scale(1.02);
 }
 
 .design-overlay {
@@ -604,7 +683,8 @@ header .container {
 
 /* Content Section */
 #content {
-
+  padding: 100px 0;
+  /* Thêm padding cho section Content */
   background-color: var(--light-color);
 }
 
@@ -868,15 +948,25 @@ footer {
 }
 
 @media (max-width: 768px) {
+
+  /* Ensure header container has no side padding that would push hamburger out */
+  header .container {
+    padding: 15px 20px;
+    /* Vẫn giữ padding để nội dung không chạm sát mép */
+  }
+
   .menu {
     display: none;
     position: absolute;
-    top: 100%;
+    /* top: 100%; Điều chỉnh này cần được xem xét kỹ */
+    top: var(--header-height, 70px);
+    /* Sử dụng biến CSS hoặc giá trị cố định */
     left: 0;
     width: 100%;
     background-color: var(--white-color);
     flex-direction: column;
-    padding: 20px;
+    padding: 20px 0;
+    /* Giảm padding ngang của menu */
     box-shadow: var(--box-shadow);
   }
 
@@ -886,10 +976,13 @@ footer {
 
   .menu li {
     margin: 10px 0;
+    text-align: center;
+    /* Đảm bảo các mục menu căn giữa */
   }
 
   .hamburger {
     display: block;
+    /* Hiển thị hamburger menu */
   }
 
   .hamburger.active span:nth-child(1) {
@@ -924,6 +1017,11 @@ footer {
 }
 
 @media (max-width: 576px) {
+  .container {
+    padding: 0 15px;
+    /* Giảm padding container trên màn hình nhỏ hơn nữa */
+  }
+
   .hero-content h1 {
     font-size: 2rem;
   }
@@ -955,7 +1053,8 @@ footer {
 
 @media (max-width: 576px) {
   #hero-about {
-    padding: 100px 0 60px;
+    padding: 100px 15px 60px;
+    /* Giảm padding ngang hơn nữa */
   }
 
   .profile-intro h1 {
@@ -1010,11 +1109,158 @@ footer {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    gap: 15px;
     padding-bottom: 10px;
   }
 
   .design-item {
-    flex: 0 0 100%;
-    scroll-snap-align: center;
+    flex: 0 0 calc(100% - 30px);
+    /* Adjust to account for gap on both sides */
+    scroll-snap-align: start;
+    /* Align to start for better scrolling */
+    margin-left: 15px;
+    /* Add margin to prevent content from touching the edge */
+    margin-right: 15px;
+    /* Add margin to prevent content from touching the edge */
+  }
+
+  .design-slider::before,
+  .design-slider::after {
+    content: '';
+    flex: 0 0 15px;
+    /* Add space at the beginning and end of the slider */
+  }
+}
+
+
+
+/* Certificates Section */
+#certificates {
+  background-color: var(--white-color);
+}
+
+.certificates-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 20px;
+  padding: 20px 0;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+}
+
+.certificates-slider::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari and Opera */
+}
+
+.certificate-item {
+  flex: 0 0 auto;
+  width: calc(33.333% - 14px);
+  /* Hiện 3 ảnh trên desktop */
+  height: 250px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  box-shadow: var(--box-shadow);
+}
+
+.certificate-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.certificate-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.certificate-item:hover .certificate-overlay {
+  transform: translateY(0);
+}
+
+.certificate-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .certificate-item {
+    width: calc(50% - 10px);
+    /* Hiện 2 ảnh trên tablet */
+  }
+}
+
+@media (max-width: 576px) {
+  .certificate-item {
+    width: calc(100% - 40px);
+    /* Hiện 1 ảnh trên mobile */
+    margin: 0 20px;
+  }
+
+  .certificates-slider {
+    padding: 20px 0;
+    margin: 0 -20px;
+  }
+}
+
+
+
+
+.certificates-wrapper {
+  position: relative;
+  padding: 0 40px;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  z-index: 10;
+}
+
+.scroll-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.prev-btn {
+  left: 0;
+}
+
+.next-btn {
+  right: 0;
+}
+
+@media (max-width: 576px) {
+  .scroll-btn {
+    display: none;
+  }
+
+  .certificates-wrapper {
+    padding: 0;
   }
 }
