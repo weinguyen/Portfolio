@@ -1,17 +1,103 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", () => {
   // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-  let vh = window.innerHeight * 0.01;
+  const vh = window.innerHeight * 0.01
   // Then we set the value in the --vh custom property to the root of the document
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
+  document.documentElement.style.setProperty("--vh", `${vh}px`)
 
   // We listen to the resize event
-  window.addEventListener('resize', () => {
+  window.addEventListener("resize", () => {
     // We execute the same script as before
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  });
-});
+    const vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty("--vh", `${vh}px`)
+  })
 
+  // Fix video loading issues
+  const videoElements = document.querySelectorAll("video")
+  videoElements.forEach((video) => {
+    // Add event listeners to handle loading states
+    video.addEventListener("loadstart", function () {
+      this.classList.add("loading")
+    })
+
+    video.addEventListener("canplay", function () {
+      this.classList.remove("loading")
+      this.classList.add("loaded")
+    })
+
+    video.addEventListener("error", function () {
+      console.error("Error loading video:", this.querySelector("source").src)
+      this.classList.add("error")
+
+      // Create error message
+      const errorMsg = document.createElement("div")
+      errorMsg.className = "video-error-message"
+      errorMsg.innerHTML = 'Không thể tải video. <button class="retry-btn">Thử lại</button>'
+      this.parentNode.appendChild(errorMsg)
+
+      // Add retry functionality
+      errorMsg.querySelector(".retry-btn").addEventListener("click", function () {
+        const videoEl = this.parentNode.parentNode.querySelector("video")
+        const currentSrc = videoEl.querySelector("source").src
+        videoEl.querySelector("source").src = currentSrc
+        videoEl.load()
+        this.parentNode.remove()
+      })
+    })
+
+    // Add click-to-load functionality for mobile
+    const videoContainer = video.parentNode
+    const overlay = videoContainer.querySelector(".video-overlay")
+
+    if (overlay) {
+      overlay.addEventListener("click", () => {
+        if (!video.classList.contains("loaded")) {
+          video.load()
+          video.play()
+        }
+      })
+    }
+  })
+
+  // Lazy load videos when they come into view
+  const lazyLoadVideos = () => {
+    const videoContainers = document.querySelectorAll(".video-item")
+
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    }
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const video = entry.target.querySelector("video")
+          if (video && !video.classList.contains("loaded")) {
+            // Set poster first for better UX
+            if (video.hasAttribute("poster")) {
+              const img = new Image()
+              img.onload = () => {
+                // Once poster is loaded, load video source
+                video.load()
+              }
+              img.src = video.getAttribute("poster")
+            } else {
+              video.load()
+            }
+          }
+          observer.unobserve(entry.target)
+        }
+      })
+    }, options)
+
+    videoContainers.forEach((container) => {
+      observer.observe(container)
+    })
+  }
+
+  // Initialize lazy loading
+  lazyLoadVideos()
+})
 
 document.addEventListener("DOMContentLoaded", () => {
   // Mobile Menu Toggle
@@ -212,80 +298,109 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 // Smooth scroll for certificates
-document.addEventListener('DOMContentLoaded', function () {
-  const certificatesSlider = document.querySelector('.certificates-slider');
-  let isScrolling = false;
-  let startX;
-  let scrollLeft;
+document.addEventListener("DOMContentLoaded", () => {
+  const certificatesSlider = document.querySelector(".certificates-slider")
+  let isScrolling = false
+  let startX
+  let scrollLeft
 
-  certificatesSlider.addEventListener('mousedown', (e) => {
-    isScrolling = true;
-    startX = e.pageX - certificatesSlider.offsetLeft;
-    scrollLeft = certificatesSlider.scrollLeft;
-  });
+  certificatesSlider.addEventListener("mousedown", (e) => {
+    isScrolling = true
+    startX = e.pageX - certificatesSlider.offsetLeft
+    scrollLeft = certificatesSlider.scrollLeft
+  })
 
-  certificatesSlider.addEventListener('mouseleave', () => {
-    isScrolling = false;
-  });
+  certificatesSlider.addEventListener("mouseleave", () => {
+    isScrolling = false
+  })
 
-  certificatesSlider.addEventListener('mouseup', () => {
-    isScrolling = false;
-  });
+  certificatesSlider.addEventListener("mouseup", () => {
+    isScrolling = false
+  })
 
-  certificatesSlider.addEventListener('mousemove', (e) => {
-    if (!isScrolling) return;
-    e.preventDefault();
-    const x = e.pageX - certificatesSlider.offsetLeft;
-    const walk = (x - startX) * 2;
-    certificatesSlider.scrollLeft = scrollLeft - walk;
-  });
-});
+  certificatesSlider.addEventListener("mousemove", (e) => {
+    if (!isScrolling) return
+    e.preventDefault()
+    const x = e.pageX - certificatesSlider.offsetLeft
+    const walk = (x - startX) * 2
+    certificatesSlider.scrollLeft = scrollLeft - walk
+  })
+})
 
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  const certificatesSlider = document.querySelector('.certificates-slider');
-  const prevBtn = document.querySelector('.prev-btn');
-  const nextBtn = document.querySelector('.next-btn');
-  let isScrolling = false;
-  let startX;
-  let scrollLeft;
+document.addEventListener("DOMContentLoaded", () => {
+  const certificatesSlider = document.querySelector(".certificates-slider")
+  const prevBtn = document.querySelector(".prev-btn")
+  const nextBtn = document.querySelector(".next-btn")
+  const isScrolling = false
+  let startX
+  let scrollLeft
 
   // Existing mouse events...
 
   // Add scroll button functionality
   if (prevBtn && nextBtn) {
-    const scrollAmount = 300; // Adjust scroll amount as needed
+    const scrollAmount = 300 // Adjust scroll amount as needed
 
-    prevBtn.addEventListener('click', () => {
+    prevBtn.addEventListener("click", () => {
       certificatesSlider.scrollBy({
         left: -scrollAmount,
-        behavior: 'smooth'
-      });
-    });
+        behavior: "smooth",
+      })
+    })
 
-    nextBtn.addEventListener('click', () => {
+    nextBtn.addEventListener("click", () => {
       certificatesSlider.scrollBy({
         left: scrollAmount,
-        behavior: 'smooth'
-      });
-    });
+        behavior: "smooth",
+      })
+    })
 
     // Show/hide buttons based on scroll position
     const updateScrollButtons = () => {
-      prevBtn.style.opacity = certificatesSlider.scrollLeft <= 0 ? '0.5' : '1';
-      prevBtn.style.cursor = certificatesSlider.scrollLeft <= 0 ? 'default' : 'pointer';
+      prevBtn.style.opacity = certificatesSlider.scrollLeft <= 0 ? "0.5" : "1"
+      prevBtn.style.cursor = certificatesSlider.scrollLeft <= 0 ? "default" : "pointer"
 
-      const maxScroll = certificatesSlider.scrollWidth - certificatesSlider.clientWidth;
-      nextBtn.style.opacity = certificatesSlider.scrollLeft >= maxScroll ? '0.5' : '1';
-      nextBtn.style.cursor = certificatesSlider.scrollLeft >= maxScroll ? 'default' : 'pointer';
-    };
+      const maxScroll = certificatesSlider.scrollWidth - certificatesSlider.clientWidth
+      nextBtn.style.opacity = certificatesSlider.scrollLeft >= maxScroll ? "0.5" : "1"
+      nextBtn.style.cursor = certificatesSlider.scrollLeft >= maxScroll ? "default" : "pointer"
+    }
 
-    certificatesSlider.addEventListener('scroll', updateScrollButtons);
-    window.addEventListener('resize', updateScrollButtons);
+    certificatesSlider.addEventListener("scroll", updateScrollButtons)
+    window.addEventListener("resize", updateScrollButtons)
 
     // Initial button state
-    updateScrollButtons();
+    updateScrollButtons()
   }
-});
+})
+
+// Video Modal Functionality
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("videoModal")
+  const videoPlayer = document.getElementById("videoPlayer")
+  const closeModal = document.querySelector(".close-modal")
+  const videoThumbnails = document.querySelectorAll(".video-thumbnail")
+
+  videoThumbnails.forEach((thumbnail) => {
+    thumbnail.addEventListener("click", function () {
+      const videoSrc = this.dataset.videoSrc
+      videoPlayer.src = videoSrc
+      modal.style.display = "block"
+      document.body.style.overflow = "hidden"
+      videoPlayer.play()
+    })
+  })
+
+  closeModal.addEventListener("click", closeVideoModal)
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closeVideoModal()
+    }
+  })
+
+  function closeVideoModal() {
+    modal.style.display = "none"
+    videoPlayer.pause()
+    videoPlayer.src = ""
+    document.body.style.overflow = "auto"
+  }
+})
