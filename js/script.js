@@ -373,34 +373,33 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })
 
-// Video Modal Functionality
-document.addEventListener("DOMContentLoaded", () => {
-  const modal = document.getElementById("videoModal")
-  const videoPlayer = document.getElementById("videoPlayer")
-  const closeModal = document.querySelector(".close-modal")
-  const videoThumbnails = document.querySelectorAll(".video-thumbnail")
+// Video Modal Functionalit
+function playVideo(thumbnailElement, videoUrl) {
+  const wrapper = thumbnailElement.parentElement;
+  const iframe = wrapper.querySelector('iframe');
 
-  videoThumbnails.forEach((thumbnail) => {
-    thumbnail.addEventListener("click", function () {
-      const videoSrc = this.dataset.videoSrc
-      videoPlayer.src = videoSrc
-      modal.style.display = "block"
-      document.body.style.overflow = "hidden"
-      videoPlayer.play()
-    })
-  })
+  // Hiển thị iframe và set source
+  iframe.style.display = 'block';
+  iframe.src = videoUrl;
 
-  closeModal.addEventListener("click", closeVideoModal)
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      closeVideoModal()
-    }
-  })
+  // Ẩn thumbnail
+  thumbnailElement.style.display = 'none';
+}
 
-  function closeVideoModal() {
-    modal.style.display = "none"
-    videoPlayer.pause()
-    videoPlayer.src = ""
-    document.body.style.overflow = "auto"
-  }
-})
+
+function replaceWithIframe(thumbnailElement, videoUrl) {
+  if (!videoUrl) return;
+
+  const iframe = document.createElement('iframe');
+  iframe.src = videoUrl;
+  iframe.width = "100%";
+  iframe.height = "100%";
+  iframe.frameBorder = "0";
+  iframe.allowFullscreen = true;
+  iframe.allow = "autoplay";
+
+  // Replace thumbnail with iframe
+  const wrapper = thumbnailElement.parentElement;
+  wrapper.innerHTML = ''; // Clear thumbnail
+  wrapper.appendChild(iframe);
+}

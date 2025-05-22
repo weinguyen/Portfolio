@@ -58,9 +58,9 @@
                     <div class="profile-intro">
                         <h1>Nguyễn Thị Quỳnh Giao</h1>
 
-                        <p class="tagline">Marketing Specialist | Content Creator | Designer</p>
-                        <p class="intro-text">Tôi là một chuyên gia marketing với kinh nghiệm trong việc quản lý mạng xã
-                            hội, sáng tạo nội dung và thiết kế. Với đam mê về truyền thông và marketing, tôi luôn tìm
+                        <p class="tagline">Marketer | Content Creator | Designer</p>
+                        <p class="intro-text">Tôi làm việc và học tập trong lĩnh vực marketing với kinh nghiệm trong
+                            mảng thiết kế. Với đam mê về truyền thông và marketing, tôi luôn tìm
                             kiếm những cách sáng tạo để kết nối thương hiệu với khách hàng.</p>
 
                         <a href="#contact" class="btn">Liên Hệ Ngay</a>
@@ -305,7 +305,7 @@
                             <h4>Quách Tử Phàm Vietnam Fanpage</h4>
                             <p>Quản lý <strong> 10</strong> thành viên: viết bài, dịch video và thiết kế ấn phẩm truyền
                                 thông</p>
-                            <p>Quản trị fanpage followers</p>
+                            <p>Quản trị fanpage followers <strong>5.4k</strong> follower</p>
 
                             <a href="https://www.facebook.com/guozifanvietnamfanpage?locale=vi_VN" target="_blank"
                                 class="timeline-link">Xem Fanpage <i class="fas fa-external-link-alt"></i></a>
@@ -628,6 +628,7 @@
                     <button class="tab-btn " data-tab="pacland-2023">Pacland 2023</button>
                     <button class="tab-btn" data-tab="pacland-2022">Pacland 2022</button>
                     <button class="tab-btn" data-tab="other-designs">Thiết kế khác</button>
+                    <button class="tab-btn" data-tab="logo">Logo</button>
                 </div>
                 <div class="tab-content">
                     <div class="tab-pane active" id="djc-designs">
@@ -636,7 +637,7 @@
                                 <a href="#" target="_blank">
                                     <img src="./asset/djc/Screenshot 2025-05-13 165748.png" alt="Design 1">
                                     <div class="design-overlay">
-                                        <h4>TỪ ĐIỂN TIẾNG DEBATE</h4>
+                                        <h4>DJC</h4>
                                     </div>
                                 </a>
                             </div>
@@ -644,7 +645,7 @@
                                 <a href="#" target="_blank">
                                     <img src="./asset/djc/Screenshot 2025-05-13 165900.png" alt="Design 1">
                                     <div class="design-overlay">
-                                        <h4>TỪ ĐIỂN TIẾNG DEBATE</h4>
+                                        <h4>DJC</h4>
                                     </div>
                                 </a>
                             </div>
@@ -652,7 +653,7 @@
                                 <a href="#" target="_blank">
                                     <img src="./asset/djc/Screenshot 2025-05-13 165939.png" alt="Design 1">
                                     <div class="design-overlay">
-                                        <h4>TỪ ĐIỂN TIẾNG DEBATE</h4>
+                                        <h4>DJC</h4>
                                     </div>
                                 </a>
                             </div>
@@ -660,7 +661,7 @@
                                 <a href="#" target="_blank">
                                     <img src="./asset/djc/Screenshot 2025-05-13 170005.png" alt="Design 1">
                                     <div class="design-overlay">
-                                        <h4>TỪ ĐIỂN TIẾNG DEBATE</h4>
+                                        <h4>DJC</h4>
                                     </div>
                                 </a>
                             </div>
@@ -1007,7 +1008,39 @@
                                 </a>
                             </div>
                         </div>
+
                     </div>
+
+                    <div class="tab-pane" id="logo">
+                        <div class="design-grid design-slider">
+                            <div class="design-item">
+                                <a href="#" target="_blank">
+                                    <img src="./asset/ViChon logo/ViChon_Final_Logo.jpg" alt="Logo 3">
+                                    <div class="design-overlay">
+                                        <h4>Logo</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="#" target="_blank">
+                                    <img src="./asset/ViChon logo/ViChon_Logo_-_Text_.png" alt="Logo 3">
+                                    <div class="design-overlay">
+                                        <h4>Logo</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="design-item">
+                                <a href="#" target="_blank">
+                                    <img src="./asset/Logo Thu Nguyệt/IMG_1984.PNG" alt="Logo 3">
+                                    <div class="design-overlay">
+                                        <h4>Logo</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
@@ -1017,29 +1050,41 @@
     <section id="videos">
         <div class="container">
             <h2 class="section-title">Videos</h2>
-
             <div class="video-grid">
                 <div class="video-item">
                     <div class="video-wrapper">
-                        <iframe src="https://drive.google.com/file/d/19QPcyEXKqZx-KkXRU1ZwWrDlI9EB2p1T/preview"
-                            allow="autoplay" allowfullscreen>
-                        </iframe>
-                        <div class="video-overlay">
-                            <h4>Nhà tù hỏa lò</h4>
+                        <div class="video-thumbnail"
+                            onclick="replaceWithIframe(this, 'https://drive.google.com/file/d/19QPcyEXKqZx-KkXRU1ZwWrDlI9EB2p1T/preview')">
+                            <img src="./asset/other/THUMBNAIL.jpg" alt="Nhà tù hỏa lò">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="video-overlay">
+                                <h4>Nhà tù hỏa lò</h4>
+                            </div>
                         </div>
+
                     </div>
+                    <p class="tagline">Biên kịch | Edit</p>
                 </div>
                 <div class="video-item">
                     <div class="video-wrapper">
-                        <iframe src="https://drive.google.com/file/d/19QPcyEXKqZx-KkXRU1ZwWrDlI9EB2p1T/preview"
-                            allow="autoplay" allowfullscreen>
-                        </iframe>
-                        <div class="video-overlay">
-                            <h4>Comming soon...</h4>
+                        <div class="video-thumbnail"
+                            onclick="replaceWithIframe(this, 'https://drive.google.com/file/d/19QPcyEXKqZx-KkXRU1ZwWrDlI9EB2p1T/preview')">
+                            <img src="#" alt="Nhà tù hỏa lò">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="video-overlay">
+                                <h4>Comming soon...</h4>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
+
+        </div>
         </div>
     </section>
     <section id="content">
@@ -1079,8 +1124,18 @@
                 <div class="content-item">
                     <h3>Khác</h3>
                     <p>Các nội dung khác</p>
-                    <a href="https://www.canva.com/design/DAGUQak_umI/hc1DmqKV0n6WGOm7sKDZ2A/edit" target="_blank"
-                        class="btn-small">Hàng phở Việt Nam</a>
+
+
+                    <div class="content-links">
+                        <a href="https://www.canva.com/design/DAGUQak_umI/hc1DmqKV0n6WGOm7sKDZ2A/edit"
+                            target="_blank">Hàng
+                            phở Việt Nam</a>
+
+                        <a href="https://drive.google.com/file/d/1Bgvl-8qDilGNBH0UHtbDfytPdRhGpTrN/view"
+                            target="_blank">Thông báo cáo chí 1</a>
+                        <a href="https://drive.google.com/file/d/1CfFHnZcv2Tf3t6vpdiFWjoGiplZOmEBI/view"
+                            target="_blank">Thông báo cáo chí 2</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1094,7 +1149,7 @@
                 <div class="contact-info">
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
-                        <p>0389805626 (đừng bán thông tin, đừng gọi lúc nửa đêm)</p>
+                        <p>0389805626</p>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
@@ -1108,23 +1163,6 @@
                         <i class="fab fa-viber"></i>
                         <p>Viber/Zalo: 0389805626</p>
                     </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Họ và tên</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Tin nhắn</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Gửi tin nhắn</button>
-                    </form>
                 </div>
             </div>
         </div>
