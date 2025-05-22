@@ -105,7 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const elementInView = (el, percentageScroll = 100) => {
     const elementTop = el.getBoundingClientRect().top
     const elementHeight = el.getBoundingClientRect().height
-
     return elementTop <= (window.innerHeight || document.documentElement.clientHeight) * (percentageScroll / 100)
   }
 
@@ -127,7 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-  // Add scroll animation styles
   const style = document.createElement("style")
   style.textContent = `
     .timeline-item, .case-study-item, .design-item, .content-item, .project-item {
@@ -158,7 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
     script.async = true
     script.defer = true
 
-    // Add the script to the document
     document.body.appendChild(script)
 
     // Add a refresh button for TikTok videos

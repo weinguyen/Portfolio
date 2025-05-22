@@ -275,11 +275,12 @@ header .container {
   .case-studies-grid,
   .design-grid,
   .content-grid,
-  .projects-grid {
-    margin: 0;
-    padding: 15px;
-    width: calc(100% - 30px);
-  }
+  .projects-grid,
+  {
+  margin: 0;
+  padding: 15px;
+  width: calc(100% - 30px);
+}
 }
 
 /* Add viewport height correction for mobile browsers */
@@ -638,7 +639,7 @@ header .container {
 }
 
 .design-item {
-  height: 200px;
+  height: 270px;
   border-radius: 8px;
   overflow: hidden;
   position: relative;
@@ -1263,4 +1264,8 @@ footer {
   .certificates-wrapper {
     padding: 0;
   }
+}
+
+.timeline-content strong {
+  color: red;
 }
