@@ -697,6 +697,12 @@ header .container {
   gap: 100px;
 }
 
+.social-icons {
+  display: flex;
+  gap: 20px;
+
+}
+
 .content-item {
   background-color: var(--white-color);
   padding: 25px;
