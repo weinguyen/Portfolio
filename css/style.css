@@ -685,14 +685,16 @@ header .container {
 /* Content Section */
 #content {
   padding: 100px 0;
-  /* Thêm padding cho section Content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--light-color);
 }
 
 .content-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 30px;
+  gap: 100px;
 }
 
 .content-item {
@@ -726,6 +728,18 @@ header .container {
   margin-bottom: 5px;
   padding: 5px 0;
 }
+
+@media (max-width: 768px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .contact-item {
+    padding: 15px;
+  }
+}
+
 
 /* Projects Section */
 #projects {
