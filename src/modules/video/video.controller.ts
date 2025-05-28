@@ -23,4 +23,8 @@ export class VideoController {
   remove(@Param('id') id: string) {
     return this.videoService.remove(id);
   }
+  @Delete()
+  remove_all() {
+    return this.videoService.remove_all();
+  }
 }

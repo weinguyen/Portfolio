@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Fetch messages count
     const messages = await ApiService.getGuestMessages()
     document.getElementById("messages-count").querySelector("p").textContent = messages.length
+    const tiktoks = await ApiService.getVideos()
+    document.getElementById("tiktok-count").querySelector("p").textContent = tiktoks.length
   } catch (error) {
     console.error("Error loading dashboard data:", error)
   }

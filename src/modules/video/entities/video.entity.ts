@@ -13,21 +13,15 @@ export class Video {
   link: string;
 
   @Column({ nullable: true })
-  @ApiProperty()
   play_count: number;
   @Column({ nullable: true })
-  @ApiProperty()
   like_count: number;
   @Column({ nullable: true })
-  @ApiProperty()
   comment_count: number;
   @Column({ nullable: true })
-  @ApiProperty()
   share_count: number;
   @Column({ nullable: true })
-  @ApiProperty()
   download_count: number;
   @Column({ nullable: true })
-  @ApiProperty()
   collect_count: number;
 }

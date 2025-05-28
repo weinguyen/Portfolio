@@ -329,6 +329,23 @@
         "tags": [
           "Video"
         ]
+      },
+      "delete": {
+        "operationId": "VideoController_remove_all",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Video"
+        ]
       }
     },
     "/video/{id}": {
@@ -466,34 +483,10 @@
         "properties": {
           "link": {
             "type": "string"
-          },
-          "play_count": {
-            "type": "number"
-          },
-          "like_count": {
-            "type": "number"
-          },
-          "comment_count": {
-            "type": "number"
-          },
-          "share_count": {
-            "type": "number"
-          },
-          "download_count": {
-            "type": "number"
-          },
-          "collect_count": {
-            "type": "number"
           }
         },
         "required": [
-          "link",
-          "play_count",
-          "like_count",
-          "comment_count",
-          "share_count",
-          "download_count",
-          "collect_count"
+          "link"
         ]
       }
     }

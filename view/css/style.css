@@ -1956,7 +1956,7 @@ footer {
 
 /* === Base Styles === */
 .tiktok-videos {
-  margin-top: 100px;
+
   position: relative;
   background-color: #f8f9fa;
 
@@ -1992,8 +1992,16 @@ footer {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   flex-shrink: 0;
+  gap: 0;
+  /* Thêm dòng này để loại bỏ khoảng cách giữa các phần tử con */
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
+.tiktok-video-wrapper>* {
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
 .tiktok-embed {
   width: 125px;
@@ -2005,32 +2013,123 @@ footer {
 
 .tiktok-stats {
   width: 325px;
-  padding: 20px;
+  padding: 25px;
   box-sizing: border-box;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98));
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    inset 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
+/* Style cho từng stat item */
 .stat-item {
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
-  color: #666;
-  font-size: 14px;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(67, 97, 238, 0.1);
 }
 
+.stat-item:last-child {
+  margin-bottom: 0;
+}
+
+.stat-item:hover {
+  transform: translateX(5px);
+  background: var(--primary-color);
+  color: white;
+  border-color: transparent;
+}
+
+/* Icon trong stat item */
 .stat-item i {
-  margin-right: 8px;
-  color: #fe2c55;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+  color: white;
+  border-radius: 12px;
+  margin-right: 15px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover i {
+  background: white;
+  color: var(--primary-color);
+}
+
+/* Text content trong stat item */
+.stat-content {
+  flex: 1;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 3px;
+  transition: all 0.3s ease;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover .stat-label,
+.stat-item:hover .stat-value {
+  color: white;
+}
+
+/* Thêm divider giữa các stats */
+.stat-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(67, 97, 238, 0.1), transparent);
+  margin: 15px 0;
 }
 
 
+
+@media (min-width: 1073px) {
+  .tiktok-stats {
+    position: absolute;
+    /* Change to absolute positioning */
+    right: 50px;
+    /* Position it over the video */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 325px;
+    background-color: rgba(255, 255, 255, 0.95);
+    /* Semi-transparent background */
+    backdrop-filter: blur(5px);
+    /* Add blur effect */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    /* Place above the video */
+  }
+
+  .tiktok-video-wrapper {
+    width: 625px;
+    /* Combined width of video and stats */
+    margin: 0 auto;
+    /* Center the wrapper */
+  }
+}
 
 /* === Responsive cho mobile === */
-@media (max-width: 768px) {
+@media (max-width: 1073px) {
   .tiktok-video-wrapper {
     flex-direction: column;
     min-width: 100%;
@@ -2057,14 +2156,10 @@ footer {
   }
 
   .scroll-arrow {
-    top: 90%;
-    transform: translateY(-50%);
-    width: 35px;
-    height: 35px;
+    display: none !important;
   }
 }
 
-/* === Scroll Arrows === */
 .scroll-arrow {
   position: absolute;
   top: 50%;
@@ -2126,4 +2221,139 @@ footer {
 
 .scroll-arrow.right {
   right: 100px;
+}
+
+
+/* ========== Base styles ========== */
+
+.header-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.back-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #218838;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.stat-item {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.quick-actions .btn {
+  background-color: #007bff;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.quick-actions .btn:hover {
+  background-color: #0056b3;
+}
+
+/* ========== Responsive Styles ========== */
+
+@media (max-width: 768px) {
+  .header-left {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-title {
+    font-size: 1.5rem;
+  }
+
+  .back-btn {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quick-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+.video-item {
+  display: flex;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+}
+
+.video-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+.video-content span {
+  word-break: break-all;
+  margin-right: 10px;
 }

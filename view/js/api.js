@@ -189,4 +189,51 @@ const ApiService = {
       throw error
     }
   },
+ getVideos: async () => {
+    const res = await fetch("/video");
+    return await res.json();
+  },
+
+  uploadTikTok: async (link) => {
+  
+    const res = await fetch("/video", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+         Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    body: JSON.stringify({ link }), 
+    });
+
+    if (!res.ok) {
+    
+      throw new Error("Failed to upload video");
+    }
+
+    return await res.json();
+  },
+  async deleteVideo(videoId) {
+    try {
+      const response = await fetch(`/video/${videoId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+           Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete video');
+      }
+
+      return true;
+    } catch (error) {
+      console.error('Error deleting video:', error);
+      throw error;
+    }
+  }
+
+
 }
+
+

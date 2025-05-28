@@ -52,4 +52,7 @@ export class VideoService {
     console.log(response.data.data);
     return response.data.data;
   }
+  async remove_all(): Promise<void> {
+    await this.videoRepository.clear();
+  }
 }

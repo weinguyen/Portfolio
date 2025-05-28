@@ -26,22 +26,35 @@ async function loadTikTokVideos() {
       blockquote.innerHTML = `<section>Loading...</section>`;
 
       // Stats Section
-      const statsDiv = document.createElement('div');
-      statsDiv.className = 'tiktok-stats';
-      statsDiv.innerHTML = `
-        <div class="stat-item">
-          <i class="fas fa-heart"></i>
-          <span>${video.likes || Math.floor(Math.random() * 10000)} likes</span>
-        </div>
-        <div class="stat-item">
-          <i class="fas fa-comment"></i>
-          <span>${video.comments || Math.floor(Math.random() * 1000)} comments</span>
-        </div>
-        <div class="stat-item">
-          <i class="fas fa-share"></i>
-          <span>${video.shares || Math.floor(Math.random() * 500)} shares</span>
-        </div>
-      `;
+      // Stats Section
+const statsDiv = document.createElement('div');
+statsDiv.className = 'tiktok-stats';
+statsDiv.innerHTML = `
+  <div class="stat-item">
+    <i class="fas fa-play"></i>
+    <span>${video.play_count ?? 0} Lượt xem</span>
+  </div>
+  <div class="stat-item">
+    <i class="fas fa-heart"></i>
+    <span>${video.like_count ?? 0} Lượt thích</span>
+  </div>
+  <div class="stat-item">
+    <i class="fas fa-comment"></i>
+    <span>${video.comment_count ?? 0} Bình luận</span>
+  </div>
+  <div class="stat-item">
+    <i class="fas fa-share"></i>
+    <span>${video.share_count ?? 0} Lượt chia sẻ</span>
+  </div>
+  <div class="stat-item">
+    <i class="fas fa-download"></i>
+    <span>${video.download_count ?? 0} Lượt tải xuống</span>
+  </div>
+  <div class="stat-item">
+    <i class="fas fa-bookmark"></i>
+    <span>${video.collect_count ?? 0} Lượt sưu tập</span>
+  </div>
+`;
 
       wrapper.appendChild(blockquote);
       wrapper.appendChild(statsDiv);
