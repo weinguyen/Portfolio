@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const cancelProjectBtn = document.getElementById("cancel-project-btn")
   const projectFormContainer = document.getElementById("project-form-container")
   const projectForm = document.getElementById("project-form")
-  const projectImageInput = document.getElementById("project-image")
-  const imagePreview = document.getElementById("image-preview")
+  const projectImagesInput = document.getElementById("project-images")
+  const imagePreview = document.getElementById("images-preview")
   const projectsTableContainer = document.getElementById("projects-table-container")
 
   loadProjects()
@@ -18,33 +18,61 @@ document.addEventListener("DOMContentLoaded", async () => {
     projectFormContainer.style.display = "none"
   })
 
-  projectImageInput.addEventListener("change", (e) => {
-    if (e.target.files.length > 0) {
-      const file = e.target.files[0]
-      const reader = new FileReader()
 
-      reader.onload = (e) => {
-        imagePreview.innerHTML = `<img src="${e.target.result}" alt="Preview">`
-      }
-
-    reader.readAsDataURL(file)
+document.getElementById('project-images').addEventListener('change', function(e) {
+    const previewContainer = document.getElementById('images-preview');
+    previewContainer.innerHTML = '';
+    
+    Array.from(this.files).forEach((file, index) => {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            const previewItem = document.createElement('div');
+            previewItem.className = 'preview-item';
+            previewItem.innerHTML = `
+                <img src="${e.target.result}" alt="Preview">
+                <button type="button" class="remove-image" data-index="${index}">×</button>
+            `;
+            previewContainer.appendChild(previewItem);
+        }
+        
+        reader.readAsDataURL(file);
+    });
+});
+document.getElementById('images-preview').addEventListener('click', function(e) {
+    if (e.target.classList.contains('remove-image')) {
+        const index = parseInt(e.target.dataset.index);
+        const fileInput = document.getElementById('project-images');
+        const files = Array.from(fileInput.files);
+        const dt = new DataTransfer();
+        files.forEach((file, i) => {
+            if (i !== index) dt.items.add(file);
+        });
+        
+        fileInput.files = dt.files;
+        
+        const event = new Event('change');
+        fileInput.dispatchEvent(event);
     }
-  })
+});
+
   projectForm.addEventListener("submit", async (e) => {
     e.preventDefault()
 
     try {
+    const uploadPromises = Array.from(projectImagesInput.files).map(file => {
       const formData = new FormData()
       formData.append('key', '5fd16c9768b32d05ff318d4826ef0712');
-      formData.append("image", projectImageInput.files[0]);
+      formData.append("image", file);
+      return ApiService.uploadProjectImage(formData)
+    });
+      const uploadResponses = await Promise.all(uploadPromises);
 
-      const uploadResponse = await ApiService.uploadProjectImage(formData)
-      const imageUrl = uploadResponse.data.url 
-      console.log(imageUrl)
+      const imageUrls = uploadResponses.map(response => response.data.url)
       const projectData = {
         title: document.getElementById("title").value,
         description: document.getElementById("description").value,
-        image: imageUrl,
+        image: imageUrls,
       }
 
       await ApiService.createProject(projectData) 

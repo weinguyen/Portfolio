@@ -284,6 +284,80 @@
           "Cert"
         ]
       }
+    },
+    "/video": {
+      "post": {
+        "operationId": "VideoController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVideoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Video"
+        ]
+      },
+      "get": {
+        "operationId": "VideoController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Video"
+        ]
+      }
+    },
+    "/video/{id}": {
+      "delete": {
+        "operationId": "VideoController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Video"
+        ]
+      }
     }
   },
   "info": {
@@ -344,7 +418,10 @@
             "type": "string"
           },
           "image": {
-            "type": "string"
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         },
         "required": [
@@ -382,6 +459,41 @@
         "required": [
           "title",
           "image"
+        ]
+      },
+      "CreateVideoDto": {
+        "type": "object",
+        "properties": {
+          "link": {
+            "type": "string"
+          },
+          "play_count": {
+            "type": "number"
+          },
+          "like_count": {
+            "type": "number"
+          },
+          "comment_count": {
+            "type": "number"
+          },
+          "share_count": {
+            "type": "number"
+          },
+          "download_count": {
+            "type": "number"
+          },
+          "collect_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "link",
+          "play_count",
+          "like_count",
+          "comment_count",
+          "share_count",
+          "download_count",
+          "collect_count"
         ]
       }
     }

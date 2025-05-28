@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       formData.append("image", certificateImageInput.files[0]);
 
       const uploadResponse = await ApiService.uploadCertificateImage(formData)
+      console.log(uploadResponse);
       const imageUrl = uploadResponse.data.url
       const certData = {
         title: document.getElementById("cert-title").value,

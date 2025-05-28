@@ -9,6 +9,7 @@ import path, { dirname, join } from 'path';
 import { AuthModule } from './modules/auth/auth.module';
 import { AuthGuard } from './modules/auth/auth.guard';
 import { APP_GUARD } from '@nestjs/core';
+import { VideoModule } from './modules/video/video.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -43,6 +44,7 @@ import { APP_GUARD } from '@nestjs/core';
     ProjectModule,
     AuthModule,
     CertModule,
+    VideoModule,
   ],
   providers: [
     {

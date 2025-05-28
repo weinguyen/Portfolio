@@ -3,8 +3,6 @@ import { Repository } from 'typeorm';
 import { Project } from './entities/project.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateProjectDto } from './dto/create-project.dto';
-import * as fs from 'fs';
-import * as path from 'path';
 
 @Injectable()
 export class ProjectService {
@@ -20,22 +18,6 @@ export class ProjectService {
     return this.projectRespository.find();
   }
   async remove(id: string): Promise<any> {
-    const project = await this.projectRespository.findOneById(id);
-
-    if (project?.image) {
-      const isUrl =
-        project.image.startsWith('http://') ||
-        project.image.startsWith('https://');
-      if (!isUrl) {
-        const filepath = path.join(__dirname, '..', '..', '..', project.image);
-        try {
-          await fs.promises.unlink(filepath);
-        } catch {
-          console.log('image is not exits');
-        }
-      }
-    }
-
     await this.projectRespository.delete(id);
     return { success: true };
   }

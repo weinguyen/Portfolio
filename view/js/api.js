@@ -64,7 +64,6 @@ const ApiService = {
   },
 
 
-  // Certificates
   async getCertificates() {
     try {
       const response = await fetch(`/cert`)

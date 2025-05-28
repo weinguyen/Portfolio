@@ -1,5 +1,5 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsOptional, IsString } from 'class-validator';
+import { ApiBearerAuth, ApiProperty } from '@nestjs/swagger';
+import { IsString } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 @Entity('phuc-project')
 export class Project {
@@ -17,7 +17,7 @@ export class Project {
   @Column({ nullable: true })
   github: string;
   @ApiProperty()
-  @Column()
-  @IsString()
-  image: string;
+  @Column('text', { array: true, default: [] })
+  @IsString({ each: true })
+  image: string[];
 }

@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-@Entity('cert')
+@Entity('phuc-cert')
 export class Cert {
   @PrimaryGeneratedColumn('uuid')
   id: number;
