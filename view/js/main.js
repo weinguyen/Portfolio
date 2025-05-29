@@ -218,7 +218,7 @@ async function handleContactFormSubmit(e) {
   }
 
   try {
-    await ApiService.submitGuestMessage(formData)
+     ApiService.submitGuestMessage(formData)
     formMessage.textContent = "Your message has been sent successfully!"
     formMessage.className = "form-message success"
     e.target.reset()

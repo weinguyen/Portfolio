@@ -10,6 +10,9 @@ import { AuthModule } from './modules/auth/auth.module';
 import { AuthGuard } from './modules/auth/auth.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { VideoModule } from './modules/video/video.module';
+import { MailerModule } from '@nestjs-modules/mailer';
+import { ThrottlerModule } from '@nestjs/throttler';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -45,6 +48,28 @@ import { VideoModule } from './modules/video/video.module';
     AuthModule,
     CertModule,
     VideoModule,
+    MailerModule.forRoot({
+      transport: {
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        auth: {
+          user: 'chimduathu1224@gmail.com',
+          pass: 'ipou wruq bvmx nnvb',
+        },
+      },
+      defaults: {
+        from: '"Chim đưa thư" <chimduathu1224@gmail.com>',
+      },
+    }),
+    ThrottlerModule.forRoot({
+      throttlers: [
+        {
+          ttl: 60,
+          limit: 20,
+        },
+      ],
+    }),
   ],
   providers: [
     {

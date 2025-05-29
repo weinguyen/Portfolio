@@ -245,6 +245,7 @@ nav {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   animation: fadeIn 1s ease;
   position: relative;
+  transition: var(--transition);
 }
 
 .profile-image::before {
