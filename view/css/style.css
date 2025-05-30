@@ -770,6 +770,7 @@ nav {
   transition: var(--transition);
   position: relative;
   cursor: pointer;
+  height: auto;
 }
 
 .slider-btn {

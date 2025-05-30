@@ -21,6 +21,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
+
       useFactory: (config: ConfigService) => ({
         type: config.get<'postgres'>('DB_TYPE'),
         host: config.get<string>('DB_HOST'),
@@ -30,6 +31,9 @@ import { ThrottlerModule } from '@nestjs/throttler';
         database: config.get<string>('DB_NAME'),
         autoLoadEntities: true,
         synchronize: true,
+        ssl: {
+          rejectUnauthorized: false,
+        },
       }),
     }),
     ServeStaticModule.forRoot(
