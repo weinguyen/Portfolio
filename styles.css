@@ -30,6 +30,15 @@ html {
     scroll-behavior: smooth;
 }
 
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -2651,4 +2660,26 @@ html {
 .hero-description p:hover {
     color: var(--dark-pink);
     transform: translateY(-2px);
+}
+
+
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .hero-container {
+        padding: 0 10px;
+    }
+
+    .hero-content {
+        width: 100%;
+        margin: 0;
+    }
+
+    .hero-description {
+        width: 100%;
+        padding: 0;
+    }
 }
