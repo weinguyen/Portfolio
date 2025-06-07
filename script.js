@@ -26,168 +26,185 @@ function safeElementsAccess(selector, callback) {
 }
 
 // Mobile Navigation
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
-const navLinks = document.querySelectorAll(".nav-link");
+function initMobileNavigation() {
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+    const navLinks = document.querySelectorAll(".nav-link");
 
-if (hamburger && navMenu) {
-    hamburger.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
-    });
+    if (hamburger && navMenu) {
+        hamburger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+            hamburger.classList.toggle("active");
+        });
+    }
+
+    if (navLinks.length > 0) {
+        navLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                safeElementAccess(".nav-menu", (menu) => {
+                    menu.classList.remove("active");
+                });
+                safeElementAccess(".hamburger", (burger) => {
+                    burger.classList.remove("active");
+                });
+            });
+        });
+    }
 }
 
-if (navLinks.length > 0) {
-    navLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-            safeElementAccess(".nav-menu", (menu) => {
-                menu.classList.remove("active");
+// Active Navigation Link
+function initActiveNavigation() {
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    const updateActiveNavLink = debounce(() => {
+        let current = "";
+        const sections = document.querySelectorAll("section");
+
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            if (window.scrollY >= sectionTop - 200) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}`) {
+                link.classList.add("active");
+            }
+        });
+    }, 10);
+
+    window.addEventListener("scroll", updateActiveNavLink);
+}
+
+// Header Background on Scroll
+function initHeaderBackground() {
+    const updateHeaderBackground = debounce(() => {
+        safeElementAccess(".header", (header) => {
+            if (window.scrollY > 100) {
+                header.style.background = "rgba(255, 255, 255, 0.98)";
+                header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+            } else {
+                header.style.background = "rgba(255, 255, 255, 0.95)";
+                header.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.05)";
+            }
+        });
+    }, 10);
+
+    window.addEventListener("scroll", updateHeaderBackground);
+}
+
+// Tabs Functionality
+function initTabsFunctionality() {
+    const tabBtns = document.querySelectorAll(".tab-btn");
+    const tabPanes = document.querySelectorAll(".tab-pane");
+
+    if (tabBtns.length > 0 && tabPanes.length > 0) {
+        tabBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const targetTab = btn.getAttribute("data-tab");
+
+                // Remove active class from all buttons and panes
+                tabBtns.forEach((b) => b.classList.remove("active"));
+                tabPanes.forEach((p) => p.classList.remove("active"));
+
+                // Add active class to clicked button and corresponding pane
+                btn.classList.add("active");
+                const targetPane = document.getElementById(targetTab);
+                if (targetPane) {
+                    targetPane.classList.add("active");
+                }
+            });
+        });
+    }
+}
+
+// Scroll Animations
+function initScrollAnimations() {
+    const observeElements = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        },
+        {
+            threshold: 0.1,
+        }
+    );
+
+    // Add animation to elements
+    const animatedSelectors = [
+        ".timeline-item",
+        ".skill-category",
+        ".stat-item",
+        ".contact-item",
+        ".project-card",
+        ".other-item"
+    ];
+
+    animatedSelectors.forEach(selector => {
+        safeElementsAccess(selector, (elements) => {
+            elements.forEach((el) => {
+                el.style.opacity = "0";
+                el.style.transform = "translateY(30px)";
+                el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+                observeElements.observe(el);
             });
         });
     });
 }
 
-// Active Navigation Link
-const updateActiveNavLink = debounce(() => {
-    let current = "";
-    const sections = document.querySelectorAll("section");
+// Contact Form Handling
+function initContactForm() {
+    safeElementAccess(".contact-form form", (contactForm) => {
+        contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
 
-    sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop - 200) {
-            current = section.getAttribute("id");
-        }
-    });
+            // Get form data
+            const nameInput = this.querySelector('input[name="name"], input[type="text"]');
+            const emailInput = this.querySelector('input[type="email"]');
+            const subjectInput = this.querySelector('input[name="subject"]');
+            const messageInput = this.querySelector("textarea");
 
-    navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${current}`) {
-            link.classList.add("active");
-        }
-    });
-}, 10);
+            const name = nameInput ? nameInput.value.trim() : '';
+            const email = emailInput ? emailInput.value.trim() : '';
+            const subject = subjectInput ? subjectInput.value.trim() : '';
+            const message = messageInput ? messageInput.value.trim() : '';
 
-window.addEventListener("scroll", updateActiveNavLink);
+            // Simple validation
+            if (!name || !email || !message) {
+                alert("Vui lòng điền đầy đủ thông tin bắt buộc!");
+                return;
+            }
 
-// Header Background on Scroll
-const updateHeaderBackground = debounce(() => {
-    safeElementAccess(".header", (header) => {
-        if (window.scrollY > 100) {
-            header.style.background = "rgba(255, 255, 255, 0.98)";
-            header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
-        } else {
-            header.style.background = "rgba(255, 255, 255, 0.95)";
-            header.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.05)";
-        }
-    });
-}, 10);
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Vui lòng nhập email hợp lệ!");
+                return;
+            }
 
-window.addEventListener("scroll", updateHeaderBackground);
+            // Simulate form submission
+            const submitBtn = this.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = "Đang gửi...";
+                submitBtn.disabled = true;
 
-// Tabs Functionality
-const tabBtns = document.querySelectorAll(".tab-btn");
-const tabPanes = document.querySelectorAll(".tab-pane");
-
-if (tabBtns.length > 0 && tabPanes.length > 0) {
-    tabBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            const targetTab = btn.getAttribute("data-tab");
-
-            // Remove active class from all buttons and panes
-            tabBtns.forEach((b) => b.classList.remove("active"));
-            tabPanes.forEach((p) => p.classList.remove("active"));
-
-            // Add active class to clicked button and corresponding pane
-            btn.classList.add("active");
-            const targetPane = document.getElementById(targetTab);
-            if (targetPane) {
-                targetPane.classList.add("active");
+                setTimeout(() => {
+                    alert("Cảm ơn bạn đã liên hệ! Tôi sẽ phản hồi sớm nhất có thể.");
+                    this.reset();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 2000);
             }
         });
     });
 }
-
-// Animate Elements on Scroll
-const observeElements = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-            }
-        });
-    },
-    {
-        threshold: 0.1,
-    }
-);
-
-// Add animation to elements
-const animatedSelectors = [
-    ".timeline-item",
-    ".skill-category",
-    ".stat-item",
-    ".contact-item",
-    ".project-card",
-    ".other-item"
-];
-
-animatedSelectors.forEach(selector => {
-    safeElementsAccess(selector, (elements) => {
-        elements.forEach((el) => {
-            el.style.opacity = "0";
-            el.style.transform = "translateY(30px)";
-            el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-            observeElements.observe(el);
-        });
-    });
-});
-
-// Contact Form Handling
-safeElementAccess(".contact-form form", (contactForm) => {
-    contactForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        // Get form data
-        const nameInput = this.querySelector('input[name="name"], input[type="text"]');
-        const emailInput = this.querySelector('input[type="email"]');
-        const subjectInput = this.querySelector('input[name="subject"]');
-        const messageInput = this.querySelector("textarea");
-
-        const name = nameInput ? nameInput.value.trim() : '';
-        const email = emailInput ? emailInput.value.trim() : '';
-        const subject = subjectInput ? subjectInput.value.trim() : '';
-        const message = messageInput ? messageInput.value.trim() : '';
-
-        // Simple validation
-        if (!name || !email || !message) {
-            alert("Vui lòng điền đầy đủ thông tin bắt buộc!");
-            return;
-        }
-
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert("Vui lòng nhập email hợp lệ!");
-            return;
-        }
-
-        // Simulate form submission
-        const submitBtn = this.querySelector('button[type="submit"]');
-        if (submitBtn) {
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = "Đang gửi...";
-            submitBtn.disabled = true;
-
-            setTimeout(() => {
-                alert("Cảm ơn bạn đã liên hệ! Tôi sẽ phản hồi sớm nhất có thể.");
-                this.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
-        }
-    });
-});
 
 // Typing Effect for Hero Title
 function typeWriter(element, text, speed = 100) {
@@ -207,8 +224,8 @@ function typeWriter(element, text, speed = 100) {
     type();
 }
 
-// Initialize typing effect when page loads
-window.addEventListener("load", () => {
+// Initialize typing effect
+function initTypingEffect() {
     safeElementAccess(".hero-subtitle", (heroSubtitle) => {
         const originalText = heroSubtitle.textContent;
         if (originalText) {
@@ -217,41 +234,23 @@ window.addEventListener("load", () => {
             }, 1000);
         }
     });
-});
+}
 
 // Parallax Effect for Hero Section
-const handleParallax = debounce(() => {
-    const scrolled = window.pageYOffset;
-    safeElementAccess(".hero-image", (heroImage) => {
-        const rate = scrolled * -0.3;
-        heroImage.style.transform = `translateY(${rate}px)`;
-    });
-}, 5);
+function initParallaxEffect() {
+    const handleParallax = debounce(() => {
+        const scrolled = window.pageYOffset;
+        safeElementAccess(".hero-image", (heroImage) => {
+            const rate = scrolled * -0.3;
+            heroImage.style.transform = `translateY(${rate}px)`;
+        });
+    }, 5);
 
-window.addEventListener("scroll", handleParallax);
+    window.addEventListener("scroll", handleParallax);
+}
 
-// Add loading animation
-window.addEventListener("load", () => {
-    document.body.classList.add("loaded");
-
-    // Animate hero content
-    safeElementAccess(".hero-text", (heroText) => {
-        setTimeout(() => {
-            heroText.style.opacity = "1";
-            heroText.style.transform = "translateY(0)";
-        }, 300);
-    });
-
-    safeElementAccess(".hero-image", (heroImage) => {
-        setTimeout(() => {
-            heroImage.style.opacity = "1";
-            heroImage.style.transform = "translateX(0)";
-        }, 600);
-    });
-});
-
-// Initialize all animations
-document.addEventListener("DOMContentLoaded", () => {
+// Hero Animation
+function initHeroAnimation() {
     // Set initial states for animated elements
     safeElementAccess(".hero-text", (heroText) => {
         heroText.style.opacity = "0";
@@ -264,23 +263,47 @@ document.addEventListener("DOMContentLoaded", () => {
         heroImage.style.transform = "translateX(30px)";
         heroImage.style.transition = "opacity 1s ease, transform 1s ease";
     });
-});
+}
 
-// Add scroll progress indicator
+// Loading Animation
+function initLoadingAnimation() {
+    window.addEventListener("load", () => {
+        document.body.classList.add("loaded");
+
+        // Animate hero content
+        safeElementAccess(".hero-text", (heroText) => {
+            setTimeout(() => {
+                heroText.style.opacity = "1";
+                heroText.style.transform = "translateY(0)";
+            }, 300);
+        });
+
+        safeElementAccess(".hero-image", (heroImage) => {
+            setTimeout(() => {
+                heroImage.style.opacity = "1";
+                heroImage.style.transform = "translateX(0)";
+            }, 600);
+        });
+
+        // Initialize typing effect after load
+        initTypingEffect();
+    });
+}
 
 
-// Add floating action button for scroll to top
+// Scroll to Top Button
 function createScrollToTop() {
     const scrollBtn = document.createElement("button");
     scrollBtn.className = "scroll-to-top";
     scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    scrollBtn.setAttribute('aria-label', 'Scroll to top');
     scrollBtn.style.cssText = `
         position: fixed;
         bottom: 30px;
         right: 30px;
         width: 50px;
         height: 50px;
-        background: var(--primary-pink);
+        background: #ff69b4;
         color: white;
         border: none;
         border-radius: 50%;
@@ -314,7 +337,7 @@ function createScrollToTop() {
     document.body.appendChild(scrollBtn);
 }
 
-// Add hover effects for project cards
+// Project Card Hover Effects
 function initProjectCardHovers() {
     safeElementsAccess(".project-card", (cards) => {
         cards.forEach((item) => {
@@ -331,11 +354,71 @@ function initProjectCardHovers() {
     });
 }
 
-// Add dynamic year to footer
+// Update Footer Year
 function updateFooterYear() {
     const currentYear = new Date().getFullYear();
     safeElementAccess(".footer-content p", (footerText) => {
         footerText.textContent = `© ${currentYear} weinguyen. All rights reserved.`;
+    });
+}
+
+// Image Viewer functionality (for regular images)
+function initializeImageViewer() {
+    document.querySelectorAll('.view-image-btn').forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // Get the image source
+            const img = this.closest('.image-preview').querySelector('.gallery-image');
+            if (!img) return;
+
+            // Create viewer
+            const viewer = document.createElement('div');
+            viewer.className = 'fullscreen-image';
+
+            // Create image element
+            const fullImg = document.createElement('img');
+            fullImg.src = img.src;
+            fullImg.alt = img.alt;
+
+            // Create close button
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'close-fullscreen';
+            closeBtn.innerHTML = '&times;';
+
+            // Assemble viewer
+            viewer.appendChild(fullImg);
+            viewer.appendChild(closeBtn);
+            document.body.appendChild(viewer);
+
+            // Show viewer with animation
+            requestAnimationFrame(() => {
+                viewer.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            // Close handling
+            const closeViewer = () => {
+                viewer.classList.remove('active');
+                document.body.style.overflow = '';
+                setTimeout(() => viewer.remove(), 300);
+            };
+
+            // Event listeners
+            closeBtn.addEventListener('click', closeViewer);
+            viewer.addEventListener('click', (e) => {
+                if (e.target === viewer) closeViewer();
+            });
+
+            // Keyboard support
+            document.addEventListener('keydown', function escHandler(e) {
+                if (e.key === 'Escape') {
+                    closeViewer();
+                    document.removeEventListener('keydown', escHandler);
+                }
+            });
+        });
     });
 }
 
@@ -353,7 +436,14 @@ function initProjectModals() {
             modal.classList.add('active');
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
+
+            // Initialize gallery first
             initializeGallery(modal);
+
+            // Then initialize image viewer after a short delay
+            setTimeout(() => {
+                initializeImageViewer();
+            }, 100);
         }
     }
 
@@ -406,12 +496,16 @@ function initProjectModals() {
         const prevBtn = modal.querySelector('.prev-btn');
         const nextBtn = modal.querySelector('.next-btn');
 
-        if (slides.length === 0) return;
+        if (slides.length === 0) {
+            console.log('No gallery slides found in modal');
+            return;
+        }
+
+        console.log(`Found ${slides.length} slides in gallery`);
 
         let currentSlide = 0;
 
         function showSlide(index) {
-            // Ensure index is within bounds
             index = Math.max(0, Math.min(index, slides.length - 1));
             currentSlide = index;
 
@@ -455,8 +549,6 @@ function initProjectModals() {
         }
 
         document.addEventListener('keydown', handleGalleryKeyPress);
-
-        // Initialize first slide
         showSlide(0);
     }
 
@@ -464,15 +556,12 @@ function initProjectModals() {
     document.addEventListener('keydown', function (e) {
         const activeModal = document.querySelector('.project-modal.active');
         if (activeModal && e.key === 'Escape') {
-            activeModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            closeModal(activeModal);
         }
     });
-
-
 }
 
-// Certificate Navigation (if exists)
+// Certificate Navigation
 function initCertificateNavigation() {
     const prevBtn = document.querySelector('.prev-btn:not(.gallery-btn)');
     const nextBtn = document.querySelector('.next-btn:not(.gallery-btn)');
@@ -487,7 +576,6 @@ function initCertificateNavigation() {
             card.style.display = i === index ? 'block' : 'none';
         });
 
-        // Update button states
         prevBtn.disabled = index === 0;
         nextBtn.disabled = index === certificateCards.length - 1;
     }
@@ -506,7 +594,6 @@ function initCertificateNavigation() {
         }
     });
 
-    // Initialize
     showCertificate(0);
 }
 
@@ -536,66 +623,78 @@ function initSmoothScroll() {
 
 // Performance monitoring
 function initPerformanceMonitoring() {
-    // Monitor for performance issues
     let scrollTimeout;
     window.addEventListener('scroll', () => {
         if (scrollTimeout) {
             clearTimeout(scrollTimeout);
         }
         scrollTimeout = setTimeout(() => {
-            // Scroll ended, can perform cleanup if needed
+            // Scroll ended cleanup
         }, 150);
     });
 }
 
-// Initialize everything when DOM is ready
-document.addEventListener('DOMContentLoaded', function () {
+// Resize handler with debounce
+function initResizeHandler() {
+    const handleResize = debounce(() => {
+        const isMobile = window.innerWidth <= 768;
+        safeElementAccess('.certificate-nav', (nav) => {
+            nav.style.display = isMobile ? 'flex' : 'none';
+        });
+    }, 250);
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Initial call
+}
+
+// Main initialization function
+function initializeWebsite() {
+    console.log('Initializing website...');
+
     // Core functionality
+    initMobileNavigation();
+    initActiveNavigation();
+    initHeaderBackground();
+    initTabsFunctionality();
+    initScrollAnimations();
+    initContactForm();
+    initParallaxEffect();
+    initHeroAnimation();
     initProjectModals();
     initProjectCardHovers();
     initCertificateNavigation();
     initSmoothScroll();
     initPerformanceMonitoring();
+    initResizeHandler();
 
     // UI enhancements
-    createScrollProgress();
+
     createScrollToTop();
     updateFooterYear();
 
-    // Console log for debugging
+    // Initialize image viewer for existing images
+    initializeImageViewer();
+
     console.log('Website initialized successfully');
-});
+}
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', initializeWebsite);
+window.addEventListener('load', initLoadingAnimation);
 
 // Handle page visibility changes
 document.addEventListener('visibilitychange', function () {
     if (document.hidden) {
-        // Page is hidden, pause any intensive operations
+        // Page is hidden - pause intensive operations
     } else {
-        // Page is visible, resume operations
+        // Page is visible - resume operations
     }
 });
 
-// Error handling
+// Global error handling
 window.addEventListener('error', function (e) {
     console.error('JavaScript error occurred:', e.error);
-    // Could send error reports to analytics here
 });
-
-// Resize handler with debounce
-const handleResize = debounce(() => {
-    // Handle responsive changes
-    const isMobile = window.innerWidth <= 768;
-
-    // Update any mobile-specific functionality
-    safeElementAccess('.certificate-nav', (nav) => {
-        nav.style.display = isMobile ? 'flex' : 'none';
-    });
-}, 250);
-
-window.addEventListener('resize', handleResize);
-
-// Initialize resize handler
-handleResize();
 
 // Export functions for testing (if needed)
 if (typeof module !== 'undefined' && module.exports) {
@@ -603,8 +702,7 @@ if (typeof module !== 'undefined' && module.exports) {
         debounce,
         safeElementAccess,
         safeElementsAccess,
-        typeWriter
+        typeWriter,
+        initializeWebsite
     };
 }
-
-
