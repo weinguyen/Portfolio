@@ -647,7 +647,56 @@ function initResizeHandler() {
     handleResize(); // Initial call
 }
 
-// Main initialization function
+function initActivityGallery() {
+    const track = document.querySelector('.slider-track');
+    const items = document.querySelectorAll('.slider-item');
+    const prevBtn = document.querySelector('.slider-nav.prev');
+    const nextBtn = document.querySelector('.slider-nav.next');
+
+    if (!track || !items.length) return;
+
+    let currentIndex = 0;
+    const itemsPerView = window.innerWidth <= 768 ? 1 : 3;
+    const maxIndex = Math.max(0, items.length - itemsPerView);
+    function updateSlider() {
+        const container = track.parentElement;
+        const containerWidth = container.offsetWidth;
+        const gap = parseFloat(getComputedStyle(track).gap) || 0;
+        const itemWidth = (containerWidth - gap * (itemsPerView - 1)) / itemsPerView;
+
+        items.forEach((item) => {
+            item.style.width = `${itemWidth}px`;
+        });
+
+        const totalGap = currentIndex * gap;
+        const translateX = currentIndex * itemWidth + totalGap;
+
+        track.style.transform = `translateX(-${translateX}px)`;
+        track.style.transition = 'transform 0.3s ease-out';
+
+        // Update button states
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === maxIndex;
+    }
+    prevBtn.addEventListener('click', () => {
+        currentIndex = Math.max(0, currentIndex - 1);
+        updateSlider();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = Math.min(maxIndex, currentIndex + 1);
+        updateSlider();
+    });
+
+    // Update on resize
+    window.addEventListener('resize', () => {
+        currentIndex = 0;
+        updateSlider();
+    });
+
+    // Initial setup
+    updateSlider();
+}
 function initializeWebsite() {
     console.log('Initializing website...');
 
@@ -667,6 +716,7 @@ function initializeWebsite() {
     initPerformanceMonitoring();
     initResizeHandler();
 
+    initActivityGallery();
     // UI enhancements
 
     createScrollToTop();
