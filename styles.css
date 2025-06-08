@@ -2582,6 +2582,8 @@ body {
     .contact-content {
         grid-template-columns: 1fr;
         gap: 2rem;
+
+
     }
 
     .contact-info {
@@ -2596,6 +2598,7 @@ body {
 
     .contact-item {
         padding: 1rem;
+        margin-left: -15px;
     }
 
     .contact-icon {
