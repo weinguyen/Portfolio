@@ -1441,7 +1441,7 @@ body {
 
 /* Experience Section */
 .experience-section {
-    padding: 8rem 0;
+    padding: 2rem 0;
     background: linear-gradient(135deg, var(--lightest-pink) 0%, var(--white) 50%, var(--lightest-pink) 100%);
     position: relative;
 }
@@ -2065,7 +2065,7 @@ body {
 
 /* Sample Work Section */
 .sample-work-section {
-    padding: 6rem 0;
+    padding: 2rem 0;
     background: var(--white);
     position: relative;
 }
@@ -2976,7 +2976,7 @@ body {
 
 
 .extracurricular-section {
-    padding: 6rem 0;
+    padding: 2rem 0;
     background: var(--white);
     text-align: center;
     /* Add this */
