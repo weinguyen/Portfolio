@@ -693,13 +693,47 @@ body {
 
 .timeline-description {
     color: var(--gray);
-    margin-bottom: 1rem;
+    margin-bottom: 0.3rem;
     line-height: 1.6;
     font-weight: 500;
 }
 
 .timeline-achievements {
     list-style-type: none;
+}
+
+.implementation-question {
+    background: var(--primary-pink);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.question-header {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.question-subheader {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .implementation-question {
+        padding: 1rem;
+    }
+
+    .question-header {
+        font-size: 1.1rem;
+    }
+
+    .question-subheader {
+        font-size: 0.9rem;
+    }
 }
 
 .timeline-achievements li {
@@ -3306,5 +3340,346 @@ body {
         width: 35px;
         height: 35px;
         font-size: 1rem;
+    }
+}
+
+
+
+
+
+/* Facebook Post Styles */
+.facebook-post {
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.post-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-name {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+}
+
+.post-time {
+    font-size: 0.8rem;
+    color: var(--gray);
+}
+
+.post-menu {
+    color: var(--gray);
+    cursor: pointer;
+}
+
+.post-content {
+    padding: 16px;
+}
+
+.post-text {
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.post-text h4 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.post-text p {
+    margin-bottom: 12px;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.grid-item {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.post-steps {
+    margin: 16px 0;
+    padding: 16px;
+    background: var(--lightest-pink);
+    border-radius: 8px;
+}
+
+.post-steps h4 {
+    margin-bottom: 12px;
+    color: var(--primary-pink);
+}
+
+.post-steps ol {
+    padding-left: 20px;
+}
+
+.post-steps li {
+    margin-bottom: 8px;
+}
+
+.post-hashtags {
+    color: var(--primary-pink);
+    font-size: 0.9rem;
+    margin-top: 12px;
+}
+
+.post-engagement {
+    padding: 12px 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.engagement-stats {
+    display: flex;
+    gap: 16px;
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+.engagement-actions {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--border-color);
+    padding-top: 12px;
+}
+
+.engagement-actions button {
+    flex: 1;
+    padding: 8px;
+    background: none;
+    border: none;
+    color: var(--gray);
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background 0.2s ease;
+}
+
+.engagement-actions button:hover {
+    background: var(--lightest-pink);
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .facebook-post {
+        margin: 0 16px;
+    }
+
+    .media-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .engagement-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .engagement-actions button {
+        flex: 0 0 100%;
+    }
+}
+
+.post-ending {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border-top: 2px solid var(--lightest-pink);
+    font-style: italic;
+    color: var(--text-dark);
+    background: linear-gradient(to right, var(--white), var(--lightest-pink), var(--white));
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.1);
+    transition: all 0.3s ease;
+}
+
+.post-ending p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.implementation-title {
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 1rem;
+    background: var(--lightest-pink);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .implementation-title {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+}
+
+.campaign-insights {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.1);
+}
+
+.insight-section {
+    margin-bottom: 4rem;
+}
+
+.insight-section h3 {
+    color: var(--primary-pink);
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.insight-section h3::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-pink);
+    border-radius: 2px;
+}
+
+.insight-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+.insight-item {
+    padding: 2rem;
+    background: linear-gradient(145deg, var(--white), var(--lightest-pink));
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(255, 107, 157, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.insight-item:hover {
+    transform: translateY(-5px);
+}
+
+.insight-item h4 {
+    color: var(--primary-pink);
+    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.insight-item h4::before {
+    content: "•";
+    color: var(--primary-pink);
+}
+
+.insight-item p {
+    line-height: 1.8;
+    color: var(--text-dark);
+    font-size: 1rem;
+}
+
+.campaign-strategy {
+    display: grid;
+    gap: 2rem;
+}
+
+.strategy-item {
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(255, 107, 157, 0.08);
+    border-left: 5px solid var(--primary-pink);
+    transition: all 0.3s ease;
+}
+
+
+.strategy-item h4 {
+    color: var(--primary-pink);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.strategy-item p {
+    color: var(--text-dark);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .campaign-insights {
+        padding: 2rem;
+        margin: 0 1rem;
+    }
+
+    .insight-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .insight-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .insight-item,
+    .strategy-item {
+        padding: 1.5rem;
+    }
+
+    .insight-item h4,
+    .strategy-item h4 {
+        font-size: 1.1rem;
     }
 }
