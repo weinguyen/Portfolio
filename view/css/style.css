@@ -1906,7 +1906,7 @@ footer {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
   border: 2px solid rgba(67, 97, 238, 0.1);
   transition: all 0.3s ease;
-  min-height: 400px;
+
 
 
 }
@@ -1942,10 +1942,16 @@ footer {
 .skill-slider {
   position: relative;
   height: 300px;
-  overflow: hidden;
+  overflow-x: auto;
+  /* Thêm scroll ngang */
+  overflow-y: hidden;
   margin: 0 30px;
-
+  width: 100%;
+  /* Đảm bảo full width */
+  box-sizing: border-box;
+  /* Include padding trong width */
 }
+
 
 
 
@@ -1954,12 +1960,15 @@ footer {
   gap: 20px;
   height: 100%;
   align-items: center;
-  min-width: max-content;
-  /* Đảm bảo container đủ rộng cho tất cả cards */
+  min-width: 0;
+  /* QUAN TRỌNG: Reset min-width */
+  width: auto;
+  /* Thay đổi từ width: 100% */
   padding: 0 20px;
-  /* Thêm padding để tạo khoảng cách đều hai bên */
   justify-content: flex-start;
-  /* Căn đều từ trái sang phải */
+  flex-shrink: 1;
+  /* Cho phép shrink */
+  box-sizing: border-box;
 }
 
 .skill-cards-container:not(.scrollable) {
@@ -1968,6 +1977,9 @@ footer {
 
 .skill-box .skill-card {
   flex: 0 0 150px;
+  /* Giữ flex-basis cố định */
+  min-width: 0;
+  /* QUAN TRỌNG: Reset min-width */
   background: linear-gradient(135deg, #f8f9fa, #fff);
   padding: 25px 15px;
   border-radius: 15px;
@@ -1979,6 +1991,8 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  /* Include padding */
 }
 
 .skill-box .skill-card:hover {
@@ -2073,7 +2087,7 @@ footer {
 
 
 /* Responsive Design for Skills */
-@media (max-width: 992px) {
+@media (max-width: 1040px) {
   .skills-boxes {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -2113,210 +2127,150 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .skills {
-    padding: 60px 0;
-    /* Tăng padding cho mobile */
-  }
-
-  .skills-boxes {
-    gap: 25px;
-    margin-top: 40px;
-  }
-
-  .skill-box {
-    min-height: 320px;
-    padding: 20px;
-    margin: 0 10px;
-    /* Thêm margin để tránh sát mép màn hình */
-  }
-
-  .skill-box-title {
-    font-size: 1.6rem;
-    margin-bottom: 25px;
-  }
-
   .skill-slider {
-    height: 220px;
-    margin: 0 15px;
-    /* Giảm margin cho mobile */
-    overflow-x: auto;
-    /* Đảm bảo có thể scroll */
-    overflow-y: hidden;
-    scroll-behavior: smooth;
-  }
-
-  /* Custom scrollbar cho mobile */
-  .skill-slider::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  .skill-slider::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-    margin: 0 5px;
-  }
-
-  .skill-slider::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 10px;
+    margin: 0 15px !important;
+    width: calc(100% - 30px) !important;
+    /* Tính toán chính xác width */
   }
 
   .skill-cards-container {
-    padding: 0 10px;
-    gap: 15px;
-    /* Giảm gap cho mobile */
+    min-width: 0 !important;
+    width: auto !important;
+    padding: 0 10px !important;
+    gap: 15px !important;
+    flex-wrap: nowrap !important;
+    /* Không wrap */
   }
 
   .skill-box .skill-card {
-    flex: 0 0 120px;
-    /* Giảm kích thước card */
-    height: 160px;
-    padding: 15px 8px;
-  }
-
-  .skill-box .skill-icon {
-    width: 45px;
-    height: 45px;
-    margin-bottom: 10px;
-  }
-
-  .skill-box .skill-card h4 {
-    font-size: 0.9rem;
-  }
-
-
-
-  .skill-nav-btn.prev-btn {
-    left: -40px;
-  }
-
-  .skill-nav-btn.next-btn {
-    right: -40px;
+    flex: 0 0 120px !important;
+    /* Giảm kích thước */
+    min-width: 0 !important;
+    max-width: 120px !important;
+    /* Thêm max-width */
+    height: 160px !important;
+    padding: 15px 8px !important;
   }
 }
 
-/* Mobile nhỏ (≤ 480px) */
 @media (max-width: 480px) {
-  .skills {
-    padding: 50px 0;
-  }
-
-  .container {
-    padding: 0 15px;
-    /* Thêm padding cho container */
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .section-subtitle {
-    font-size: 1rem;
-    margin-bottom: 30px;
-  }
-
-  .skills-boxes {
-    gap: 20px;
-    margin-top: 30px;
-  }
-
-  .skill-box {
-    min-height: 280px;
-    padding: 15px;
-    margin: 0 5px;
-  }
-
-  .skill-box-title {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-  }
-
   .skill-slider {
-    height: 200px;
-    margin: 0 10px;
+    margin: 0 10px !important;
+    width: calc(100% - 20px) !important;
   }
 
   .skill-cards-container {
-    padding: 0 5px;
-    gap: 12px;
+    min-width: 0 !important;
+    width: auto !important;
+    padding: 0 5px !important;
+    gap: 12px !important;
   }
 
   .skill-box .skill-card {
-    flex: 0 0 100px;
-    /* Giảm thêm kích thước */
-    height: 140px;
-    padding: 12px 6px;
-  }
-
-  .skill-box .skill-icon {
-    width: 35px;
-    height: 35px;
-    margin-bottom: 8px;
-  }
-
-  .skill-box .skill-card h4 {
-    font-size: 0.8rem;
-  }
-
-  .skill-nav-btn {
-    width: 30px;
-    height: 30px;
-    font-size: 0.9rem;
-  }
-
-  .skill-nav-btn.prev-btn {
-    left: -35px;
-  }
-
-  .skill-nav-btn.next-btn {
-    right: -35px;
+    flex: 0 0 100px !important;
+    min-width: 0 !important;
+    max-width: 100px !important;
+    height: 140px !important;
+    padding: 12px 6px !important;
   }
 }
 
-/* Landscape orientation cho mobile */
-@media (max-width: 768px) and (orientation: landscape) {
+@media (max-width: 400px) {
+  .container {
+    padding: 0 10px !important;
+    max-width: 100% !important;
+  }
+
   .skill-box {
-    min-height: 250px;
+    padding: 15px !important;
+    margin: 0 5px !important;
+    width: calc(100% - 10px) !important;
+    max-width: calc(100% - 10px) !important;
+    box-sizing: border-box !important;
   }
 
   .skill-slider {
-    height: 180px;
+    margin: 0 5px !important;
+    width: calc(100% - 10px) !important;
+    height: 200px !important;
+  }
+
+  .skill-cards-container {
+    min-width: 0 !important;
+    width: auto !important;
+    padding: 0 2px !important;
+    gap: 8px !important;
+    justify-content: flex-start !important;
   }
 
   .skill-box .skill-card {
-    height: 140px;
+    flex: 0 0 75px !important;
+    /* Rất nhỏ cho màn hình 400px */
+    min-width: 0 !important;
+    max-width: 75px !important;
+    height: 110px !important;
+    padding: 8px 4px !important;
+  }
+
+  .skill-box .skill-icon {
+    width: 25px !important;
+    height: 25px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .skill-box .skill-card h4 {
+    font-size: 0.65rem !important;
+    line-height: 1.1 !important;
+  }
+
+  /* Ẩn navigation buttons */
+  .skill-nav-btn {
+    display: none !important;
   }
 }
 
-/* Touch-friendly improvements cho mobile */
-@media (hover: none) and (pointer: coarse) {
-  .skill-box .skill-card:hover {
-    transform: none;
-    /* Tắt hover effect trên touch devices */
+@media (max-width: 320px) {
+  .skill-box .skill-card {
+    flex: 0 0 60px !important;
+    min-width: 0 !important;
+    max-width: 60px !important;
+    height: 90px !important;
+    padding: 6px 2px !important;
   }
 
-  .skill-nav-btn:hover {
-    transform: translateY(-50%);
-    /* Giữ nguyên vị trí button */
+  .skill-box .skill-icon {
+    width: 20px !important;
+    height: 20px !important;
   }
 
-  /* Tăng kích thước touch target */
-  .skill-nav-btn {
-    width: 44px;
-    height: 44px;
-    font-size: 1.1rem;
+  .skill-box .skill-card h4 {
+    font-size: 0.55rem !important;
   }
 
-  /* Thêm visual feedback cho touch */
-  .skill-box .skill-card:active {
-    transform: scale(0.98);
-    transition: transform 0.1s ease;
+  .skill-cards-container {
+    gap: 5px !important;
+  }
+}
+
+/* Force override tất cả conflicts */
+@media (max-width: 400px) {
+  * {
+    box-sizing: border-box !important;
   }
 
-  .skill-nav-btn:active {
-    transform: translateY(-50%) scale(0.9);
-    transition: transform 0.1s ease;
+  .skills-boxes {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
   }
+
+  /* Prevent horizontal overflow */
+  html,
+  body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+  }
+
+
 }
 
 .skills {
