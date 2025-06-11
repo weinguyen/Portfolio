@@ -415,5 +415,27 @@ function initGallery(modal) {
   })
 }
 
-
+// Add this to your main.js file or create a new skills.js file
+document.addEventListener('DOMContentLoaded', function() {
+    const skillNavButtons = document.querySelectorAll('.skill-nav-btn');
+    
+    skillNavButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const boxType = this.getAttribute('data-box');
+            const isNext = this.classList.contains('next-btn');
+            const container = document.getElementById(`${boxType}-skills`);
+            const cardWidth = 170; // 150px card width + 20px gap
+            const scrollAmount = cardWidth * 2; // Scroll 2 cards at a time
+            
+            if (isNext) {
+                container.style.transform = `translateX(-${scrollAmount}px)`;
+            } else {
+                const currentTransform = container.style.transform;
+                const currentX = currentTransform ? parseInt(currentTransform.replace('translateX(', '').replace('px)', '')) : 0;
+                const newX = Math.min(0, currentX + scrollAmount);
+                container.style.transform = `translateX(${newX}px)`;
+            }
+        });
+    });
+});
 
