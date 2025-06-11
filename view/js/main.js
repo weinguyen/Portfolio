@@ -239,50 +239,74 @@ async function handleContactFormSubmit(e) {
 // Slider functionality
 function initCertificatesSlider() {
     const container = document.querySelector('.certificates-container');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
+    const prevBtn = document.querySelector('.slider-btn.prev-btn');
+    const nextBtn = document.querySelector('.slider-btn.next-btn');
+    
+    if (!container || !prevBtn || !nextBtn) {
+        console.log('Certificate slider elements not found');
+        return;
+    }
+    
     let slideIndex = 0;
+    const cardWidth = 350; // Chiều rộng card + gap
     
     function updateSlidePosition() {
         const cards = container.querySelectorAll('.certificate-card');
-        const cardWidth = cards[0].offsetWidth + 30; // width + gap
+        if (cards.length === 0) return;
+        
+        const maxSlides = Math.max(0, cards.length - getVisibleCards());
+        
+        // Giới hạn slideIndex
+        slideIndex = Math.max(0, Math.min(slideIndex, maxSlides));
+        
+        // Apply transform
         container.style.transform = `translateX(-${slideIndex * cardWidth}px)`;
         
-        // Update buttons visibility
-        prevBtn.style.opacity = slideIndex === 0 ? '0.5' : '1';
-        prevBtn.style.cursor = slideIndex === 0 ? 'not-allowed' : 'pointer';
+        // Update button states
+        prevBtn.disabled = slideIndex === 0;
+        nextBtn.disabled = slideIndex >= maxSlides;
         
-        const maxSlides = Math.max(0, cards.length - (window.innerWidth > 768 ? 3 : 1));
+        // Update button opacity
+        prevBtn.style.opacity = slideIndex === 0 ? '0.5' : '1';
         nextBtn.style.opacity = slideIndex >= maxSlides ? '0.5' : '1';
-        nextBtn.style.cursor = slideIndex >= maxSlides ? 'not-allowed' : 'pointer';
     }
     
-    prevBtn.addEventListener('click', () => {
+    function getVisibleCards() {
+        return window.innerWidth > 768 ? 3 : 1;
+    }
+    
+    // Event listeners
+    prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('Prev button clicked, current index:', slideIndex);
         if (slideIndex > 0) {
             slideIndex--;
             updateSlidePosition();
         }
     });
     
-    nextBtn.addEventListener('click', () => {
+    nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('Next button clicked, current index:', slideIndex);
         const cards = container.querySelectorAll('.certificate-card');
-        const visibleCards = window.innerWidth > 768 ? 3 : 1;
-        if (slideIndex < cards.length - visibleCards) {
+        const maxSlides = Math.max(0, cards.length - getVisibleCards());
+        if (slideIndex < maxSlides) {
             slideIndex++;
             updateSlidePosition();
         }
     });
     
-    // Reset position on window resize
+    // Reset on window resize
     window.addEventListener('resize', () => {
         slideIndex = 0;
         updateSlidePosition();
     });
     
-    // Initial position
+    // Initial setup
     updateSlidePosition();
+    
+    console.log('Certificate slider initialized');
 }
-
 
 function initCertificateModal() {
     const modal = document.querySelector('.certificate-modal');
