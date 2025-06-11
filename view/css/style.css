@@ -1344,7 +1344,7 @@ footer {
 .timeline-content:hover .experience-list,
 .timeline-content:hover .education-list {
   opacity: 1;
-  max-height: 300px;
+  max-height: 500px;
   /* Thay vì 500px */
   transform: translateY(0);
 }
