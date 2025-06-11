@@ -2203,20 +2203,7 @@ footer {
     justify-content: flex-start !important;
   }
 
-  .skill-box .skill-card {
-    flex: 0 0 75px !important;
-    /* Rất nhỏ cho màn hình 400px */
-    min-width: 0 !important;
-    max-width: 75px !important;
-    height: 110px !important;
-    padding: 8px 4px !important;
-  }
 
-  .skill-box .skill-icon {
-    width: 25px !important;
-    height: 25px !important;
-    margin-bottom: 5px !important;
-  }
 
   .skill-box .skill-card h4 {
     font-size: 0.65rem !important;
