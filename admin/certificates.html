@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Certificates</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Phúc's Portfolio Admin</div>
+                <ul class="nav-links">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="certificates.html" class="active">Certificates</a></li>
+                    <li><a href="messages.html">Messages</a></li>
+                    <li><a href="../index.html">View Site</a></li>
+                    <li><a href="#" id="logout-btn">Logout</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1 class="admin-title">Manage Certificates</h1>
+            <div class="admin-actions">
+                <button id="add-certificate-btn" class="btn">Add New Certificate</button>
+            </div>
+        </div>
+
+        <div class="admin-card" id="certificate-form-container" style="display: none;">
+            <h2 class="admin-form-title">Add New Certificate</h2>
+            <form id="certificate-form">
+                <div class="form-group">
+                    <label for="cert-title">Certificate Title</label>
+                    <input type="text" id="cert-title" name="title" required>
+                </div>
+                <div class="file-input-container">
+                    <label class="file-input-label" for="certificate-image">Certificate Image</label>
+                    <input type="file" id="certificate-image" name="image" accept="image/*" required>
+                    <div class="file-preview" id="cert-image-preview"></div>
+                </div>
+                <button type="submit" class="btn">Save Certificate</button>
+                <button type="button" id="cancel-certificate-btn" class="btn"
+                    style="background-color: #6c757d;">Cancel</button>
+            </form>
+        </div>
+
+        <div class="admin-card">
+            <h2>Certificates List</h2>
+            <div id="certificates-table-container">
+                <p class="loading">Loading certificates...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="js/admin-common.js"></script>
+    <script src="js/certificates.js"></script>
+</body>
+
+</html>

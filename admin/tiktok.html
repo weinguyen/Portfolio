@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TikTok Clips</title>
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Phúc's Portfolio Admin</div>
+                <ul class="nav-links">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="certificates.html">Certificates</a></li>
+                    <li><a href="messages.html">Messages</a></li>
+                    <li><a href="../index.html">View Site</a></li>
+                    <li><a href="#" id="logout-btn">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1 class="admin-title">TikTok Video Manager</h1>
+        </div>
+
+        <div class="admin-card">
+            <h2>Upload TikTok Link</h2>
+            <form id="tiktok-form">
+                <input type="url" id="tiktok-link" placeholder="Enter TikTok video URL..." required />
+                <button type="submit" class="btn">Upload</button>
+            </form>
+        </div>
+
+        <div class="admin-card">
+            <h2>Uploaded TikTok Clips</h2>
+            <ul id="tiktok-list" class="video-list">
+                <li>Loading...</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="./js/tiktok.js"></script>
+</body>
+
+</html>
